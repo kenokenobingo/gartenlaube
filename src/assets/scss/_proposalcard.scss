@@ -4,10 +4,9 @@
 
 .proposalcard {
   background-color: $color-background-primary;
-  border-radius: 15px;
   padding: 2rem;
   position: relative;
-  box-shadow: 0 2px 2px 0 $color-shadow-primary;
+  border: 2px $color-border-primary solid;
 
   &:hover {
     cursor: pointer;

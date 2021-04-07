@@ -9,17 +9,9 @@ import FadeIn from '../../components/common/FadeIn';
 import Wrap from '../../components/common/Wrap';
 import SocialMedia from '../../components/common/SocialMedia';
 
-const MolochV3Cube = React.memo(() => {
+const CompostImg = React.memo(() => {
   return (
-    <div
-      className="cube"
-      data-testid="cube"
-      data-aos="fade-up"
-      data-aos-delay="150">
-      <div className="cube__segment--top"></div>
-      <div className="cube__segment--left"></div>
-      <div className="cube__segment--right"></div>
-    </div>
+    <img alt="Compost heap." src="https://upload.wikimedia.org/wikipedia/commons/3/31/%22Gnoj_basajo_v_ko%C5%A1_na_mu%C5%A1u%22%2C_Robidi%C5%A1%C4%8De_1951.jpg"></img>
   );
 });
 
@@ -66,11 +58,11 @@ export default function GetStarted() {
 
           <div className="landing">
             <div className="landing__subtitle">
-              A proposed evolution of the Moloch DAO framework
+              Managing our gardening community
             </div>
 
             <div className="landing__img">
-              <MolochV3Cube />
+              <CompostImg></CompostImg>
             </div>
 
             <div className="landing__button">

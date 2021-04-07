@@ -11,7 +11,7 @@
 }
 
 .modal-overlay {
-  background: rgba(248, 250, 253, 0.8);
+  background: rgba(255, 255, 255, 0.6);
   border: none;
   left: 0;
   margin: 0;
@@ -32,10 +32,9 @@
     100vh - 10rem
   ); /* dynamic height, minus any surrounding margin + padding */
   background-color: $color-background-primary;
-  border-radius: 15px;
   border: 2px solid $color-border-primary;
   padding: 2rem 1rem;
-  overflow-y: scroll;
+  overflow-y: none;
 
   @media only screen and (min-width: em($bp-sm)) {
     padding: 2rem 3.6rem;
