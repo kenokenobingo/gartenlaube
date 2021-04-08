@@ -4,14 +4,15 @@ import AOS from 'aos';
 import '../../../node_modules/aos/dist/aos.css';
 
 import {CenterLogo} from '../../components/logo';
-import {NavHamburger} from '../../components/Nav';
 import FadeIn from '../../components/common/FadeIn';
 import Wrap from '../../components/common/Wrap';
 import SocialMedia from '../../components/common/SocialMedia';
 
+import compost from '../../assets/images/compost.jpg'
+
 const CompostImg = React.memo(() => {
   return (
-    <img alt="Compost heap." src="https://upload.wikimedia.org/wikipedia/commons/3/31/%22Gnoj_basajo_v_ko%C5%A1_na_mu%C5%A1u%22%2C_Robidi%C5%A1%C4%8De_1951.jpg"></img>
+    <img alt="Compost heap." src={compost}></img>
   );
 });
 
@@ -19,7 +20,6 @@ function GetStartedHeader() {
   return (
     <div data-testid="header" className="landing__header">
       <SocialMedia />
-      <NavHamburger />
     </div>
   );
 }

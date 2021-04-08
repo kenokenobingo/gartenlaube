@@ -6,7 +6,7 @@ export default function Head() {
       <title>compost.energy</title>
       <meta
         name="description"
-        content="A modular DAO framework developed and coordinated by its members"
+        content="Managing our gardening community"
       />
     </Helmet>
   );
