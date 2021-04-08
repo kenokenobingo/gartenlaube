@@ -39,11 +39,11 @@ jobs:
         env:
           REACT_APP_ENVIRONMENT: development
           REACT_APP_INFURA_PROJECT_ID_DEV: ${{ secrets.REACT_APP_INFURA_PROJECT_ID_DEV }}
-          REACT_APP_DAO_REGISTRY_CONTRACT_ADDRESS: "0xaC87308bB216124fD84BbC3356073f4DFecacF6e"
-          REACT_APP_MULTICALL_CONTRACT_ADDRESS: "0x8AF7413a544176647a17937813AFcF00Fb7ED0bB"
-          REACT_APP_SNAPSHOT_HUB_API_URL: https://snapshot-hub-erc712.dev.thelao.io
+          REACT_APP_DAO_REGISTRY_CONTRACT_ADDRESS: ${{ secrets.REACT_APP_DAO_REGISTRY_CONTRACT_ADDRESS }}
+          REACT_APP_MULTICALL_CONTRACT_ADDRESS: ${{ secrets.REACT_APP_MULTICALL_CONTRACT_ADDRESS }}
+          REACT_APP_SNAPSHOT_HUB_API_URL: ${{ secrets.REACT_APP_SNAPSHOT_HUB_API_URL }}
           REACT_APP_SNAPSHOT_SPACE: tribute
-          REACT_APP_GRAPH_API_URL: https://api.thegraph.com/subgraphs/name/openlawteam/tribute-dev
+          REACT_APP_GRAPH_API_URL: ${{ secrets.REACT_APP_GRAPH_API_URL }}
         run: npm run build
 
       - name: Deploy to GitHub Pages site
