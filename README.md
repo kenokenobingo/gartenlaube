@@ -1,4 +1,4 @@
-# Moloch v3 DApp
+# Gartenlaube
 
 Related supporting repositories:
 
