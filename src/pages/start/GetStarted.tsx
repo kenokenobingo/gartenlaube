@@ -8,12 +8,10 @@ import FadeIn from '../../components/common/FadeIn';
 import Wrap from '../../components/common/Wrap';
 import SocialMedia from '../../components/common/SocialMedia';
 
-import compost from '../../assets/images/compost.jpg'
+import compost from '../../assets/images/compost.jpg';
 
 const CompostImg = React.memo(() => {
-  return (
-    <img alt="Compost heap." src={compost}></img>
-  );
+  return <img alt="Compost heap." src={compost}></img>;
 });
 
 function GetStartedHeader() {
