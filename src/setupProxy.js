@@ -1,4 +1,5 @@
 const {createProxyMiddleware} = require('http-proxy-middleware');
+const {cors} = require('cors');
 
 /**
  * A proxy to get around CORS in local development.
@@ -6,6 +7,7 @@ const {createProxyMiddleware} = require('http-proxy-middleware');
  * @param {Express App} app
  */
 module.exports = (app) => {
+  app.use(cors({ origin: "https://gartenlaube-gate.herokuapp.com", credentials: true }))
   // Proxy for our development Snapshot Hub
   app.use(
     createProxyMiddleware('/snapshot-hub', {
