@@ -7,7 +7,9 @@ const {cors} = require('cors');
  * @param {Express App} app
  */
 module.exports = (app) => {
-  app.use(cors({ origin: "https://gartenlaube-gate.herokuapp.com", credentials: true }))
+  app.use(
+    cors({origin: 'https://gartenlaube-gate.herokuapp.com', credentials: true})
+  );
   // Proxy for our development Snapshot Hub
   app.use(
     createProxyMiddleware('/snapshot-hub', {
