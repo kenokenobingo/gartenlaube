@@ -1,7 +1,5 @@
 import {useLocation} from 'react-router-dom';
 
-import SocialMedia from './common/SocialMedia';
-
 export default function Footer() {
   /**
    * Their hooks
@@ -24,7 +22,6 @@ export default function Footer() {
 
   return (
     <div className="footer">
-      <SocialMedia />
     </div>
   );
 }

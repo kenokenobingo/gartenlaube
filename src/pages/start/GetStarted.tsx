@@ -6,7 +6,6 @@ import '../../../node_modules/aos/dist/aos.css';
 import {CenterLogo} from '../../components/logo';
 import FadeIn from '../../components/common/FadeIn';
 import Wrap from '../../components/common/Wrap';
-import SocialMedia from '../../components/common/SocialMedia';
 
 import compost from '../../assets/images/compost.jpg';
 
@@ -17,7 +16,6 @@ const CompostImg = React.memo(() => {
 function GetStartedHeader() {
   return (
     <div data-testid="header" className="landing__header">
-      <SocialMedia />
     </div>
   );
 }
