@@ -17,13 +17,11 @@ describe('App unit tests', () => {
       // Header
       expect(screen.getByTestId(/header/)).toBeInTheDocument();
       // Logo
-      expect(screen.getByText(/MOLOCH v3/)).toBeInTheDocument();
+      expect(screen.getByText(/compost.energy/)).toBeInTheDocument();
       // Subtitle
       expect(
-        screen.getByText(/a proposed evolution of the moloch dao framework/i)
+        screen.getByText(/Managing our gardening community/i)
       ).toBeInTheDocument();
-      // Cube image
-      expect(screen.getByTestId('cube')).toBeInTheDocument();
       // Join button
       expect(screen.getByRole('button', {name: /join/i})).toBeInTheDocument();
     });
@@ -45,9 +43,7 @@ describe('App unit tests', () => {
 
     await waitFor(() => {
       // Header
-      expect(screen.getByText(/MOLOCH v3/)).toBeInTheDocument();
-      // Burger icon
-      expect(screen.getByLabelText(/menu/i)).toBeInTheDocument();
+      expect(screen.getByText(/compost.energy/)).toBeInTheDocument();
       expect(
         screen.getByRole('button', {name: /connect/i})
       ).toBeInTheDocument();
