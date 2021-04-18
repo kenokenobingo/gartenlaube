@@ -14,10 +14,7 @@ const CompostImg = React.memo(() => {
 });
 
 function GetStartedHeader() {
-  return (
-    <div data-testid="header" className="landing__header">
-    </div>
-  );
+  return <div data-testid="header" className="landing__header"></div>;
 }
 
 export default function GetStarted() {

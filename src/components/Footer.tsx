@@ -20,8 +20,5 @@ export default function Footer() {
   // Don't display footer if we're on the index page
   if (isIndexPath) return null;
 
-  return (
-    <div className="footer">
-    </div>
-  );
+  return <div className="footer"></div>;
 }
