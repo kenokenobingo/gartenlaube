@@ -170,6 +170,7 @@ main {
   animation: error 0.9s infinite ease-in-out alternate;
   // the text needs to wrap as the JSON errors can be long
   word-break: break-word;
+  font-weight: 600;
 }
 @keyframes error {
   from {
