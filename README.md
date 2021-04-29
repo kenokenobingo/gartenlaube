@@ -35,23 +35,25 @@ NOTE:
 
 `REACT_APP_DEFAULT_CHAIN_NAME_LOCAL=<MAINNET | ROPSTEN | RINKEBY | GOERLI | KOVAN | GANACHE>`
 
-### Ganache Workspace Setup
+### Ganache Blockchain Setup
 
-When you set up your Ganache network workspace in the [Ganache GUI app](https://www.trufflesuite.com/ganache):
-
-- Change the Network ID to `1337`. That is necessary in order to connect MetaMask to your Ganache network. The DApp is configured for Ganache to be `chainId` `1337`.
-- Turn off Automine and set the Mining Block Time (Seconds) to `10`.
-
-Alternatively (and for now the more stable method), you can run the network with the [Ganache CLI](https://github.com/trufflesuite/ganache-cli):
+#### Using [Ganache CLI](https://github.com/trufflesuite/ganache-cli) (more stable):
 
 - `npm install -g ganache-cli` (if not already installed)
 - `ganache-cli --port 7545 --networkId 1337 --blockTime 10`
 
-**Remember**: After you deploy the `DaoRegistry` smart contract on your local Ganache network you must include the deployed contract's address in your local root `.env` file. Additionally, you will need to add the contract addresses for the deployed adapters and extensions contracts to the config in `/src/config.ts`.
+#### Using [Ganache GUI app](https://www.trufflesuite.com/ganache):
+
+- Change the Network ID to `1337`. That is necessary in order to connect MetaMask to your Ganache network. The DApp is configured for Ganache to be `chainId` `1337`.
+- Turn off Automine and set the Mining Block Time (Seconds) to `10`.
+
+---
+
+**Remember**: After you deploy the `DaoRegistry` and `Multicall` smart contracts on your local Ganache network you must include the deployed contract's address in your local root `.env` file. Additionally, you will need to add the contract addresses for the deployed adapters and extensions contracts to the config in `/src/config.ts`.
 
 #### Saving Ganache data
 
-If you want to use the same accounts and data from a previous Ganache chain, you can add the following arguments to the `ganache-cli` command. The `--db` path can be any path with any structure. Ganache creates many "loose" files, so it may be easiest to keep each chain in its own directory (e.g. `some/path/your-ganache-dbs/01-01-1999`).
+If you want to use the same accounts (`-d`) and data (`--db`) from a previous Ganache chain, you can add the below arguments to the `ganache-cli` command. The `--db` path can be any path with any structure. Ganache creates many "loose" files, so it may be easiest to keep each chain in its own directory (e.g. `some/path/your-ganache-dbs/01-01-1999`).
 
 `... -d --db some/path/your-ganache-dbs/[DIR_WHERE_CHAIN_DATA_WILL_BE_SAVED]`
 
