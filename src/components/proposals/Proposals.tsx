@@ -144,6 +144,18 @@ export default function Proposals(props: ProposalsProps): JSX.Element {
         return;
       }
 
+      /**
+       * Voting proposal: voting has ended and is not in grace period,
+       * off-chain result was not submitted, and there are votes (need to submit to get true result).
+       *
+       * @note Should be placed before "failed" logic.
+       */
+      if (offchainResultNotYetSubmitted && noSnapshotVotes === false) {
+        filteredProposalsToSet.votingProposals.push(p);
+
+        return;
+      }
+
       // Failed proposal
       if (
         voteState !== undefined &&
@@ -173,11 +185,10 @@ export default function Proposals(props: ProposalsProps): JSX.Element {
 
       // Voting proposal
       if (
-        (voteState !== undefined &&
-          (proposalHasVotingState(VotingState.GRACE_PERIOD, voteState) ||
-            proposalHasVotingState(VotingState.IN_PROGRESS, voteState)) &&
-          proposalHasFlag(ProposalFlag.SPONSORED, daoProposal.flags)) ||
-        offchainResultNotYetSubmitted
+        voteState !== undefined &&
+        (proposalHasVotingState(VotingState.GRACE_PERIOD, voteState) ||
+          proposalHasVotingState(VotingState.IN_PROGRESS, voteState)) &&
+        proposalHasFlag(ProposalFlag.SPONSORED, daoProposal.flags)
       ) {
         filteredProposalsToSet.votingProposals.push(p);
 
