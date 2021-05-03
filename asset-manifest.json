@@ -6,9 +6,9 @@
     "static/js/1.77199f2b.chunk.js.map": "/static/js/1.77199f2b.chunk.js.map",
     "static/js/2.18a0444e.chunk.js": "/static/js/2.18a0444e.chunk.js",
     "static/js/2.18a0444e.chunk.js.map": "/static/js/2.18a0444e.chunk.js.map",
-    "main.css": "/static/css/main.893856f9.chunk.css",
-    "main.js": "/static/js/main.0dffc744.chunk.js",
-    "main.js.map": "/static/js/main.0dffc744.chunk.js.map",
+    "main.css": "/static/css/main.ed757462.chunk.css",
+    "main.js": "/static/js/main.235a6e62.chunk.js",
+    "main.js.map": "/static/js/main.235a6e62.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.18046186.js",
     "runtime-main.js.map": "/static/js/runtime-main.18046186.js.map",
     "static/css/5.ec02d681.chunk.css": "/static/css/5.ec02d681.chunk.css",
@@ -56,7 +56,7 @@
     "static/js/25.fc5f1298.chunk.js.map": "/static/js/25.fc5f1298.chunk.js.map",
     "index.html": "/index.html",
     "static/css/5.ec02d681.chunk.css.map": "/static/css/5.ec02d681.chunk.css.map",
-    "static/css/main.893856f9.chunk.css.map": "/static/css/main.893856f9.chunk.css.map",
+    "static/css/main.ed757462.chunk.css.map": "/static/css/main.ed757462.chunk.css.map",
     "static/js/5.867097e1.chunk.js.LICENSE.txt": "/static/js/5.867097e1.chunk.js.LICENSE.txt",
     "static/media/style.scss": "/static/media/Basteleur-Bold.c08126d8.woff",
     "static/media/compost.662c0eab.jpg": "/static/media/compost.662c0eab.jpg"
@@ -65,7 +65,7 @@
     "static/js/runtime-main.18046186.js",
     "static/css/5.ec02d681.chunk.css",
     "static/js/5.867097e1.chunk.js",
-    "static/css/main.893856f9.chunk.css",
-    "static/js/main.0dffc744.chunk.js"
+    "static/css/main.ed757462.chunk.css",
+    "static/js/main.235a6e62.chunk.js"
   ]
 }
