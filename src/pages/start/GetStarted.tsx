@@ -55,11 +55,7 @@ export default function GetStarted() {
             </div>
 
             <div className="landing__img">
-<<<<<<< HEAD
               <CompostImg></CompostImg>
-=======
-              <TributeCube />
->>>>>>> d288eb687d5f8e79bc211acae4d44a8c7748afa9
             </div>
 
             <div className="landing__button">
