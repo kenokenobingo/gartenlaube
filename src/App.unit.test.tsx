@@ -16,7 +16,11 @@ describe('App unit tests', () => {
       // Header
       expect(screen.getByTestId(/header/)).toBeInTheDocument();
       // Logo
+<<<<<<< HEAD
       expect(screen.getByText(/compost.energy/)).toBeInTheDocument();
+=======
+      expect(screen.getByText(/TRIBUTE/)).toBeInTheDocument();
+>>>>>>> d288eb687d5f8e79bc211acae4d44a8c7748afa9
       // Subtitle
       expect(
         screen.getByText(/Managing our gardening community/i)
@@ -42,7 +46,13 @@ describe('App unit tests', () => {
 
     await waitFor(() => {
       // Header
+<<<<<<< HEAD
       expect(screen.getByText(/compost.energy/)).toBeInTheDocument();
+=======
+      expect(screen.getByText(/TRIBUTE/)).toBeInTheDocument();
+      // Burger icon
+      expect(screen.getByLabelText(/menu/i)).toBeInTheDocument();
+>>>>>>> d288eb687d5f8e79bc211acae4d44a8c7748afa9
       expect(
         screen.getByRole('button', {name: /connect/i})
       ).toBeInTheDocument();
