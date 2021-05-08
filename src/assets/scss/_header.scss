@@ -17,6 +17,7 @@
   padding: 0 2rem;
   position: relative;
   z-index: 2;
+  align-self: baseline;
 
   @media only screen and (max-width: 1179px) {
     padding-right: 0;
