@@ -8,6 +8,7 @@ import {AsyncStatus} from '../../../util/types';
 import {BURN_ADDRESS} from '../../../util/constants';
 import {ProposalData} from '../../proposals/types';
 import {SNAPSHOT_HUB_API_URL, SPACE} from '../../../config';
+import {useIsMounted} from '../../../hooks';
 
 type UseGovernanceProposalsReturn = {
   governanceProposals: ProposalData[];
@@ -36,20 +37,25 @@ export function useGovernanceProposals({
   const [governanceProposals, setGovernanceProposals] = useState<
     ProposalData[]
   >([]);
-  const [
-    governanceProposalsError,
-    setGovernanceProposalsError,
-  ] = useState<Error>();
-  const [
-    governanceProposalsStatus,
-    setGovernanceProposalsStatus,
-  ] = useState<AsyncStatus>(AsyncStatus.STANDBY);
+  const [governanceProposalsError, setGovernanceProposalsError] =
+    useState<Error>();
+  const [governanceProposalsStatus, setGovernanceProposalsStatus] =
+    useState<AsyncStatus>(AsyncStatus.STANDBY);
+
+  /**
+   * Our hooks
+   */
+
+  const {isMountedRef} = useIsMounted();
 
   /**
    * Cached callbacks
    */
 
-  const handleGetProposalsCached = useCallback(handleGetProposals, [actionId]);
+  const handleGetProposalsCached = useCallback(handleGetProposals, [
+    actionId,
+    isMountedRef,
+  ]);
 
   /**
    * Effects
@@ -117,9 +123,13 @@ export function useGovernanceProposals({
         actionId
       );
 
+      if (!isMountedRef.current) return;
+
       setGovernanceProposalsStatus(AsyncStatus.FULFILLED);
       setGovernanceProposals(snapshotProposalEntries);
     } catch (error) {
+      if (!isMountedRef.current) return;
+
       setGovernanceProposalsStatus(AsyncStatus.REJECTED);
       setGovernanceProposals([]);
       setGovernanceProposalsError(error);

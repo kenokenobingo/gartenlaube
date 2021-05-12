@@ -1,10 +1,11 @@
-import {render, screen, waitFor} from '@testing-library/react';
 import {
   SnapshotProposalResponseData,
   SnapshotType,
 } from '@openlaw/snapshot-js-erc712';
+import {render, screen, waitFor} from '@testing-library/react';
+import Web3 from 'web3';
 
-import {DEFAULT_ETH_ADDRESS} from '../../test/helpers';
+import {DEFAULT_ETH_ADDRESS, FakeHttpProvider} from '../../test/helpers';
 import {rest, server} from '../../test/server';
 import {SNAPSHOT_HUB_API_URL} from '../../config';
 import {snapshotAPIProposalResponse} from '../../test/restResponses';
@@ -31,8 +32,7 @@ describe('GovernanceProposals unit tests', () => {
             },
           },
         },
-        sig:
-          '0xdbdbf122734b34ed5b10542551636e4250e98f443e35bf5d625f284fe54dcaf80c5bc44be04fefed1e9e5f25a7c13809a5266fcdbdcd0b94c885f2128544e79a1b',
+        sig: '0xdbdbf122734b34ed5b10542551636e4250e98f443e35bf5d625f284fe54dcaf80c5bc44be04fefed1e9e5f25a7c13809a5266fcdbdcd0b94c885f2128544e79a1b',
         authorIpfsHash:
           '0xfe8f864ef475f60c7e01d5425df332199c5ae7ab712b8545f07433c68f06c644',
         relayerIpfsHash: '',
@@ -73,33 +73,41 @@ describe('GovernanceProposals unit tests', () => {
       ]
     );
 
+    let mockWeb3Provider: FakeHttpProvider;
+    let web3Instance: Web3;
+
     render(
       <Wrapper
         useInit
         useWallet
-        getProps={({mockWeb3Provider, web3Instance}) => {
-          /**
-           * Inject voting results. The order should align with the order above of fake responses.
-           */
-
-          // Inject passed result
-          mockWeb3Provider.injectResult(
-            web3Instance.eth.abi.encodeParameters(
-              ['uint256', 'bytes[]'],
-              [
-                0,
-                [
-                  web3Instance.eth.abi.encodeParameter('uint256', '10000000'),
-                  web3Instance.eth.abi.encodeParameter('uint256', '200000'),
-                ],
-              ]
-            ),
-            {abi: MulticallABI, abiMethodName: 'aggregate'}
-          );
+        getProps={(p) => {
+          mockWeb3Provider = p.mockWeb3Provider;
+          web3Instance = p.web3Instance;
         }}>
         <GovernanceProposals />
       </Wrapper>
     );
+
+    await waitFor(() => {
+      /**
+       * Inject voting results. The order should align with the order above of fake responses.
+       */
+
+      // Inject passed result
+      mockWeb3Provider.injectResult(
+        web3Instance.eth.abi.encodeParameters(
+          ['uint256', 'bytes[]'],
+          [
+            0,
+            [
+              web3Instance.eth.abi.encodeParameter('uint256', '10000000'),
+              web3Instance.eth.abi.encodeParameter('uint256', '200000'),
+            ],
+          ]
+        ),
+        {abi: MulticallABI, abiMethodName: 'aggregate'}
+      );
+    });
 
     // Header
     await waitFor(() => {
