@@ -13,7 +13,7 @@ export function NavLinks() {
           </NavLink>
         </li>
         <li tabIndex={0}>
-          <NavLink to="/governance-proposals">
+          <NavLink to="/governance">
             <span>Governance</span>
           </NavLink>
         </li>
