@@ -49,8 +49,10 @@ export default function CreateGovernanceProposal() {
    */
 
   const {connected, account} = useWeb3Modal();
-  const {proposalSignAndSendStatus, signAndSendProposal} =
-    useSignAndSubmitProposal<SnapshotType.proposal>();
+  const {
+    proposalSignAndSendStatus,
+    signAndSendProposal,
+  } = useSignAndSubmitProposal<SnapshotType.proposal>();
   const {defaultChainError} = useIsDefaultChain();
 
   /**
@@ -259,8 +261,7 @@ function RenderWrapper(props: React.PropsWithChildren<any>): JSX.Element {
         </div>
 
         <div className="form-wrapper">
-          <div className="form__description">
-          </div>
+          <div className="form__description"></div>
 
           {/* RENDER CHILDREN */}
           {props.children}

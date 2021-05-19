@@ -188,8 +188,7 @@ export default function CreateMembershipProposal() {
             metadata: {
               proposalAmountValues,
               submitActionArgs,
-              accountAuthorizedToProcessPassedProposal:
-                proposerAddressToChecksum,
+              accountAuthorizedToProcessPassedProposal: proposerAddressToChecksum,
             },
           },
           adapterName: ContractAdapterNames.onboarding,
@@ -405,8 +404,7 @@ function RenderWrapper(props: React.PropsWithChildren<any>): JSX.Element {
         </div>
 
         <div className="form-wrapper">
-          <div className="form__description">
-          </div>
+          <div className="form__description"></div>
 
           {/* RENDER CHILDREN */}
           {props.children}
