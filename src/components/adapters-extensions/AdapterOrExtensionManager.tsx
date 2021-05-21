@@ -628,11 +628,6 @@ export default function AdapterOrExtensionManager() {
       <div className="adaptermanager">
         {renderDaoName()}
         {renderErrorMessage()}
-        <p>
-          Nulla aliquet porttitor venenatis. Donec a dui et dui fringilla
-          consectetur id nec massa. Aliquam erat volutpat. Sed ut dui ut lacus
-          dictum fermentum vel tincidunt neque. Sed sed lacinia...
-        </p>
         <div className="adapter-extension__selection">
           <div>
             <Checkbox

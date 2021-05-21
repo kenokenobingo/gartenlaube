@@ -18,6 +18,7 @@ REACT_APP_INFURA_PROJECT_ID_LOCAL=...
 REACT_APP_DAO_REGISTRY_CONTRACT_ADDRESS=...
 REACT_APP_MULTICALL_CONTRACT_ADDRESS=...
 REACT_APP_SNAPSHOT_HUB_API_URL=http://localhost:8081
+REACT_APP_COUPON_API_URL=http://localhost:8080
 REACT_APP_SNAPSHOT_SPACE=tribute
 REACT_APP_GRAPH_API_URL=...
 ```
@@ -74,6 +75,14 @@ Follow the instructions [here](https://github.com/openlawteam/tribute-contracts/
 Deployments for the development environment are handled automatically with a GitHub Action:
 
 - `GitHub Pages development deployment`: push to `main` branch -> https://tributedao.com
+
+## Developer notes
+
+### Node Version
+
+If developing and running manually using `npm start`, or adding/updating/removing NPM packages, it's important to use the version of Node (listed in our `.nvmrc`). To do this, run `nvm use` inside the project root.
+
+[NVM](https://github.com/nvm-sh/nvm) (Node Version Manager) is an open-sourced tool which can switch between different versions of Node. For this project we currently use Node `14.x`. If you don't have NVM, [it's easy to install](https://github.com/nvm-sh/nvm#installing-and-updating). If you don't want to use NVM, just be sure you have Node 14.x.
 
 ---
 
