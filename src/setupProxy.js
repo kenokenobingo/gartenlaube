@@ -10,7 +10,7 @@ module.exports = (app) => {
   app.use(
     createProxyMiddleware('/snapshot-hub', {
       // Address should match `REACT_APP_SNAPSHOT_HUB_API_URL` address from config
-      target: 'http://localhost:8081',
+      target: 'https://gazebo-snapshot.herokuapp.com',
       changeOrigin: true,
       pathRewrite: function (path, _req) {
         // Rewrite any path after `snapshot-hub/` to the root of the `target`.
