@@ -1,6 +1,6 @@
 {
   "name": "gartenlaube",
-  "verion": "0.1.11",
+  "version": "0.1.13",
   "repository": {
     "type": "git",
     "url": "https://github.com/kenokenobingo/gartenlaube.git"
@@ -20,7 +20,7 @@
     "react-device-detect": "^1.17.0",
     "react-dom": "^17.0.2",
     "react-helmet": "^6.1.0",
-    "react-hook-form": "^6.15.4",
+    "react-hook-form": "^7.8.4",
     "react-lines-ellipsis": "^0.15.0",
     "react-media": "^1.10.0",
     "react-modal": "^3.13.1",
