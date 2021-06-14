@@ -6,6 +6,7 @@ import '../../../node_modules/aos/dist/aos.css';
 import {CenterLogo} from '../../components/logo';
 import FadeIn from '../../components/common/FadeIn';
 import Wrap from '../../components/common/Wrap';
+import React from 'react';
 
 import compost from '../../assets/images/compost.jpg';
 
