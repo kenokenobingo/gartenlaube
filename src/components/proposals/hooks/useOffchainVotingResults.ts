@@ -55,8 +55,9 @@ export function useOffchainVotingResults(
   const [offchainVotingResultsStatus, setOffchainVotingResultsStatus] =
     useState<AsyncStatus>(AsyncStatus.STANDBY);
 
-  const [offchainVotingResultsError, setOffchainVotingResultsError] =
-    useState<Error | undefined>();
+  const [offchainVotingResultsError, setOffchainVotingResultsError] = useState<
+    Error | undefined
+  >();
 
   /**
    * Our hooks
@@ -90,7 +91,12 @@ export function useOffchainVotingResults(
   useEffect(() => {
     const proposalsToMap = Array.isArray(proposals) ? proposals : [proposals];
 
-    if (!bankAddress || !getPriorAmountABI || !proposalsToMap.length) {
+    if (
+      !bankAddress ||
+      !getPriorAmountABI ||
+      !proposalsToMap.length ||
+      !web3Instance
+    ) {
       return;
     }
 

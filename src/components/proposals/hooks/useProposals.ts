@@ -1,6 +1,7 @@
 import {useCallback, useEffect, useState} from 'react';
 import {useSelector} from 'react-redux';
 import {AbiItem} from 'web3-utils/types';
+import Web3 from 'web3';
 import {
   SnapshotDraftResponse,
   SnapshotProposalResponse,
@@ -113,13 +114,13 @@ export function useProposals({
 
   const getProposalsCached = useCallback(getProposals, [
     includeProposalsExistingOnlyOffchain,
-    web3Instance,
   ]);
   const handleGetProposalsCached = useCallback(handleGetProposals, [
     adapterAddress,
     getProposalsCached,
     registryAbi,
     registryAddress,
+    web3Instance,
   ]);
 
   /**
@@ -328,10 +329,12 @@ export function useProposals({
        * Re-map entries setting the correct id used for the `proposalId` in the DAO.
        * If it has a draft hash, then this is what was submitted to the DAO, most likely (e.g. submit proposal)
        */
-      const proposalEntries = Object.entries(proposalsJSON).map(([id, p]): [
-        string,
-        SnapshotProposalResponseData
-      ] => [p.data.erc712DraftHash || id, p]);
+      const proposalEntries = Object.entries(proposalsJSON).map(
+        ([id, p]): [string, SnapshotProposalResponseData] => [
+          p.data.erc712DraftHash || id,
+          p,
+        ]
+      );
 
       return proposalEntries;
     } catch (error) {
@@ -355,10 +358,12 @@ export function useProposals({
     proposalIds,
     registryAbi,
     registryAddress,
+    web3Instance,
   }: {
     proposalIds: string[];
     registryAbi: AbiItem[];
     registryAddress: string;
+    web3Instance: Web3;
   }): Promise<[id: string, proposal: Proposal][]> {
     try {
       const proposalsAbi = registryAbi.find(
@@ -393,9 +398,9 @@ export function useProposals({
   }
 
   async function handleGetProposals() {
-    if (!adapterAddress) return;
-    if (!registryAbi) return;
-    if (!registryAddress) return;
+    if (!adapterAddress || !registryAbi || !registryAddress || !web3Instance) {
+      return;
+    }
 
     try {
       setProposalsStatus(AsyncStatus.PENDING);
@@ -423,6 +428,7 @@ export function useProposals({
         proposalIds,
         registryAbi,
         registryAddress,
+        web3Instance,
       });
 
       // Set the proposal IDs based on the DAO proposals' return data

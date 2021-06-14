@@ -7,14 +7,16 @@ import Wrapper from './test/Wrapper';
 describe('App unit tests', () => {
   test('can render index page', async () => {
     render(
-      <Wrapper useInit>
+      <Wrapper>
         <App />
       </Wrapper>
     );
 
     await waitFor(() => {
-      // Header
-      expect(screen.getByTestId(/header/)).toBeInTheDocument();
+      // Header for get started
+      expect(screen.getByTestId(/get-started-header/)).toBeInTheDocument();
+      // Burger icon
+      expect(screen.getByLabelText(/menu/i)).toBeInTheDocument();
       // Logo
       expect(screen.getByText(/compost.energy/)).toBeInTheDocument();
       // Subtitle
@@ -23,6 +25,37 @@ describe('App unit tests', () => {
       ).toBeInTheDocument();
       // Join button
       expect(screen.getByRole('button', {name: /join/i})).toBeInTheDocument();
+    });
+  });
+
+  test("can render `renderMainContent` instead of a <Route />'s content", async () => {
+    function RenderToGovernance() {
+      const history = useHistory();
+      history.push('/governance');
+
+      return <App renderMainContent={() => <p>So cool!</p>} />;
+    }
+
+    render(
+      <Wrapper>
+        <RenderToGovernance />
+      </Wrapper>
+    );
+
+    await waitFor(() => {
+      // Logo
+      expect(screen.getByText(/TRIBUTE/)).toBeInTheDocument();
+      // Burger icon
+      expect(screen.getByLabelText(/menu/i)).toBeInTheDocument();
+      // Exposed nav menu
+      expect(screen.getByRole('navigation')).toBeInTheDocument();
+      // Connect button
+      expect(
+        screen.getByRole('button', {name: /connect/i})
+      ).toBeInTheDocument();
+
+      // Main content
+      expect(screen.getByText(/so cool!/i)).toBeInTheDocument();
     });
   });
 
@@ -35,7 +68,7 @@ describe('App unit tests', () => {
     }
 
     render(
-      <Wrapper useInit>
+      <Wrapper>
         <CrappyPage />
       </Wrapper>
     );

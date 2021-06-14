@@ -39,7 +39,7 @@ export default function Nav() {
 
   return (
     <Media query="(max-width: 62em)">
-      {(matches: boolean) => (
+      {(_matches: boolean) => (
         <div className="nav-header">
           <div className="nav-header__menu-container">
             {/* NAV */}
