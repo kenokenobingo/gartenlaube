@@ -44,9 +44,7 @@ describe('App unit tests', () => {
 
     await waitFor(() => {
       // Logo
-      expect(screen.getByText(/TRIBUTE/)).toBeInTheDocument();
-      // Burger icon
-      expect(screen.getByLabelText(/menu/i)).toBeInTheDocument();
+      expect(screen.getByText(/compost.energy/)).toBeInTheDocument();
       // Exposed nav menu
       expect(screen.getByRole('navigation')).toBeInTheDocument();
       // Connect button
