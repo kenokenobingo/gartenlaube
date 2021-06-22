@@ -58,11 +58,16 @@ export default function SubmitAction(props: SubmitActionProps) {
 
   const {txEtherscanURL, txIsPromptOpen, txSend, txStatus} = useContractSend();
 
-  const {isDisabled, openWhyDisabledModal, WhyDisabledModal} =
-    useMemberActionDisabled();
+  const {
+    isDisabled,
+    openWhyDisabledModal,
+    WhyDisabledModal,
+  } = useMemberActionDisabled();
 
-  const {proposalSignAndSendStatus, signAndSendProposal} =
-    useSignAndSubmitProposal<SnapshotType.proposal>();
+  const {
+    proposalSignAndSendStatus,
+    signAndSendProposal,
+  } = useSignAndSubmitProposal<SnapshotType.proposal>();
 
   const gasPrices = useETHGasPrice();
 

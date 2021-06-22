@@ -25,28 +25,24 @@ describe('useProposalsVotingAdapter unit tests', () => {
             useInit: true,
             useWallet: true,
             getProps: ({mockWeb3Provider, web3Instance}) => {
-              const offchainVotingAdapterResponse =
-                web3Instance.eth.abi.encodeParameter(
-                  'address',
-                  DEFAULT_ETH_ADDRESS
-                );
-              const votingAdapterResponse =
-                web3Instance.eth.abi.encodeParameter(
-                  'address',
-                  '0xa8ED02b24B4E9912e39337322885b65b23CdF188'
-                );
+              const offchainVotingAdapterResponse = web3Instance.eth.abi.encodeParameter(
+                'address',
+                DEFAULT_ETH_ADDRESS
+              );
+              const votingAdapterResponse = web3Instance.eth.abi.encodeParameter(
+                'address',
+                '0xa8ED02b24B4E9912e39337322885b65b23CdF188'
+              );
 
-              const offchainVotingAdapterNameResponse =
-                web3Instance.eth.abi.encodeParameter(
-                  'string',
-                  VotingAdapterName.OffchainVotingContract
-                );
+              const offchainVotingAdapterNameResponse = web3Instance.eth.abi.encodeParameter(
+                'string',
+                VotingAdapterName.OffchainVotingContract
+              );
 
-              const votingAdapterNameResponse =
-                web3Instance.eth.abi.encodeParameter(
-                  'string',
-                  VotingAdapterName.VotingContract
-                );
+              const votingAdapterNameResponse = web3Instance.eth.abi.encodeParameter(
+                'string',
+                VotingAdapterName.VotingContract
+              );
 
               // Mock `dao.votingAdapter` responses
               mockWeb3Provider.injectResult(
@@ -181,28 +177,24 @@ describe('useProposalsVotingAdapter unit tests', () => {
             useInit: true,
             useWallet: true,
             getProps: ({mockWeb3Provider, web3Instance}) => {
-              const offchainVotingAdapterResponse =
-                web3Instance.eth.abi.encodeParameter(
-                  'address',
-                  DEFAULT_ETH_ADDRESS
-                );
-              const votingAdapterResponse =
-                web3Instance.eth.abi.encodeParameter(
-                  'address',
-                  '0xa8ED02b24B4E9912e39337322885b65b23CdF188'
-                );
+              const offchainVotingAdapterResponse = web3Instance.eth.abi.encodeParameter(
+                'address',
+                DEFAULT_ETH_ADDRESS
+              );
+              const votingAdapterResponse = web3Instance.eth.abi.encodeParameter(
+                'address',
+                '0xa8ED02b24B4E9912e39337322885b65b23CdF188'
+              );
 
-              const offchainVotingAdapterNameResponse =
-                web3Instance.eth.abi.encodeParameter(
-                  'string',
-                  VotingAdapterName.OffchainVotingContract
-                );
+              const offchainVotingAdapterNameResponse = web3Instance.eth.abi.encodeParameter(
+                'string',
+                VotingAdapterName.OffchainVotingContract
+              );
 
-              const votingAdapterNameResponse =
-                web3Instance.eth.abi.encodeParameter(
-                  'string',
-                  VotingAdapterName.VotingContract
-                );
+              const votingAdapterNameResponse = web3Instance.eth.abi.encodeParameter(
+                'string',
+                VotingAdapterName.VotingContract
+              );
 
               // Mock `dao.votingAdapter` responses
               mockWeb3Provider.injectResult(
@@ -267,28 +259,24 @@ describe('useProposalsVotingAdapter unit tests', () => {
             useInit: true,
             useWallet: true,
             getProps: ({mockWeb3Provider, web3Instance}) => {
-              const offchainVotingAdapterResponse =
-                web3Instance.eth.abi.encodeParameter(
-                  'address',
-                  DEFAULT_ETH_ADDRESS
-                );
-              const votingAdapterResponse =
-                web3Instance.eth.abi.encodeParameter(
-                  'address',
-                  '0xa8ED02b24B4E9912e39337322885b65b23CdF188'
-                );
+              const offchainVotingAdapterResponse = web3Instance.eth.abi.encodeParameter(
+                'address',
+                DEFAULT_ETH_ADDRESS
+              );
+              const votingAdapterResponse = web3Instance.eth.abi.encodeParameter(
+                'address',
+                '0xa8ED02b24B4E9912e39337322885b65b23CdF188'
+              );
 
-              const offchainVotingAdapterNameResponse =
-                web3Instance.eth.abi.encodeParameter(
-                  'string',
-                  VotingAdapterName.OffchainVotingContract
-                );
+              const offchainVotingAdapterNameResponse = web3Instance.eth.abi.encodeParameter(
+                'string',
+                VotingAdapterName.OffchainVotingContract
+              );
 
-              const votingAdapterNameResponse =
-                web3Instance.eth.abi.encodeParameter(
-                  'string',
-                  VotingAdapterName.VotingContract
-                );
+              const votingAdapterNameResponse = web3Instance.eth.abi.encodeParameter(
+                'string',
+                VotingAdapterName.VotingContract
+              );
 
               // Mock `dao.votingAdapter` responses
               mockWeb3Provider.injectResult(
@@ -357,17 +345,15 @@ describe('useProposalsVotingAdapter unit tests', () => {
             useInit: true,
             useWallet: true,
             getProps: ({mockWeb3Provider, web3Instance}) => {
-              const offchainVotingAdapterResponse =
-                web3Instance.eth.abi.encodeParameter(
-                  'address',
-                  DEFAULT_ETH_ADDRESS
-                );
+              const offchainVotingAdapterResponse = web3Instance.eth.abi.encodeParameter(
+                'address',
+                DEFAULT_ETH_ADDRESS
+              );
 
-              const offchainVotingAdapterNameResponse =
-                web3Instance.eth.abi.encodeParameter(
-                  'string',
-                  VotingAdapterName.OffchainVotingContract
-                );
+              const offchainVotingAdapterNameResponse = web3Instance.eth.abi.encodeParameter(
+                'string',
+                VotingAdapterName.OffchainVotingContract
+              );
 
               // Mock `dao.votingAdapter` responses
               mockWeb3Provider.injectResult(

@@ -71,8 +71,13 @@ export function useRedeemCoupon(): ReturnUseRedeemCoupon {
   const gasPrices = useETHGasPrice();
   const {account, web3Instance} = useWeb3Modal();
   const {defaultChainError} = useIsDefaultChain();
-  const {txError, txEtherscanURL, txIsPromptOpen, txSend, txStatus} =
-    useContractSend();
+  const {
+    txError,
+    txEtherscanURL,
+    txIsPromptOpen,
+    txSend,
+    txStatus,
+  } = useContractSend();
 
   /**
    * Their hooks

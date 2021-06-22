@@ -49,11 +49,15 @@ export function useOffchainVotingResults(
    * State
    */
 
-  const [votingResults, setVotingResults] =
-    useState<OffchainVotingResultEntries>([]);
+  const [
+    votingResults,
+    setVotingResults,
+  ] = useState<OffchainVotingResultEntries>([]);
 
-  const [offchainVotingResultsStatus, setOffchainVotingResultsStatus] =
-    useState<AsyncStatus>(AsyncStatus.STANDBY);
+  const [
+    offchainVotingResultsStatus,
+    setOffchainVotingResultsStatus,
+  ] = useState<AsyncStatus>(AsyncStatus.STANDBY);
 
   const [offchainVotingResultsError, setOffchainVotingResultsError] = useState<
     Error | undefined

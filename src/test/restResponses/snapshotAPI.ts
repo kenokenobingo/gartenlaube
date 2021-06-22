@@ -117,7 +117,8 @@ export const snapshotAPIOffchainProofResponse: SnapshotOffchainProofResponse = {
       proof: [],
       proposalId:
         '0x946cb6d94b8c8082656af73149a514382b6ea6e87045129825b94266afcf229c',
-      sig: '0x2ec030f67e0655ad7cacc5625b535442f1075a8ee02acbd8a6b9a77c75fe3f8068b8a360276facfd4e87c022f2c6d15ada22f5fd40f53e2aba2021a40c6368981c',
+      sig:
+        '0x2ec030f67e0655ad7cacc5625b535442f1075a8ee02acbd8a6b9a77c75fe3f8068b8a360276facfd4e87c022f2c6d15ada22f5fd40f53e2aba2021a40c6368981c',
       timestamp: 1620652809,
     },
   ],

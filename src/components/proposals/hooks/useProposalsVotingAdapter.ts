@@ -56,13 +56,19 @@ export function useProposalsVotingAdapter(
     UseProposalsVotingAdapterReturn['proposalsVotingAdapters']
   >([]);
 
-  const [proposalsVotingAdaptersError, setProposalsVotingAdaptersError] =
-    useState<UseProposalsVotingAdapterReturn['proposalsVotingAdaptersError']>();
+  const [
+    proposalsVotingAdaptersError,
+    setProposalsVotingAdaptersError,
+  ] = useState<
+    UseProposalsVotingAdapterReturn['proposalsVotingAdaptersError']
+  >();
 
-  const [proposalsVotingAdaptersStatus, setProposalsVotingAdaptersStatus] =
-    useState<UseProposalsVotingAdapterReturn['proposalsVotingAdaptersStatus']>(
-      AsyncStatus.STANDBY
-    );
+  const [
+    proposalsVotingAdaptersStatus,
+    setProposalsVotingAdaptersStatus,
+  ] = useState<
+    UseProposalsVotingAdapterReturn['proposalsVotingAdaptersStatus']
+  >(AsyncStatus.STANDBY);
 
   /**
    * Cached callbacks
@@ -156,8 +162,9 @@ export function useProposalsVotingAdapter(
         (_id, i) => votingAdapterAddressResults[i] !== BURN_ADDRESS
       );
 
-      const filteredVotingAdapterAddressResults =
-        votingAdapterAddressResults.filter((a) => a !== BURN_ADDRESS);
+      const filteredVotingAdapterAddressResults = votingAdapterAddressResults.filter(
+        (a) => a !== BURN_ADDRESS
+      );
 
       /**
        * Exit early if there's no voting adapter addresses.
@@ -170,12 +177,9 @@ export function useProposalsVotingAdapter(
         return;
       }
 
-      const votingAdapterNameCalls: MulticallTuple[] =
-        filteredVotingAdapterAddressResults.map((votingAdapterAddress) => [
-          votingAdapterAddress,
-          getAdapterNameABI,
-          [],
-        ]);
+      const votingAdapterNameCalls: MulticallTuple[] = filteredVotingAdapterAddressResults.map(
+        (votingAdapterAddress) => [votingAdapterAddress, getAdapterNameABI, []]
+      );
 
       const adapterNameResults: VotingAdapterName[] = await multicall({
         calls: votingAdapterNameCalls,

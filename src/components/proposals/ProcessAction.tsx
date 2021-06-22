@@ -64,8 +64,11 @@ export default function ProcessAction(props: ProcessActionProps) {
 
   const {account, web3Instance} = useWeb3Modal();
   const {txEtherscanURL, txIsPromptOpen, txSend, txStatus} = useContractSend();
-  const {isDisabled, openWhyDisabledModal, WhyDisabledModal} =
-    useMemberActionDisabled(useMemberActionDisabledProps);
+  const {
+    isDisabled,
+    openWhyDisabledModal,
+    WhyDisabledModal,
+  } = useMemberActionDisabled(useMemberActionDisabledProps);
   const gasPrices = useETHGasPrice();
 
   /**

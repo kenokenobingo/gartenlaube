@@ -63,8 +63,10 @@ export default function ProcessActionTribute(props: ProcessActionTributeProps) {
    */
 
   const [submitError, setSubmitError] = useState<Error>();
-  const [tributeProposalDetails, setTributeProposalDetails] =
-    useState<TributeProposalDetails>();
+  const [
+    tributeProposalDetails,
+    setTributeProposalDetails,
+  ] = useState<TributeProposalDetails>();
 
   /**
    * Refs
@@ -163,9 +165,9 @@ export default function ProcessActionTribute(props: ProcessActionTributeProps) {
 
     // Proposals with this restriction will have this value stored in its
     // snapshot metadata.
-    const {accountAuthorizedToProcessPassedProposal} = (
-      snapshotProposal as SnapshotProposal
-    ).msg.payload.metadata;
+    const {
+      accountAuthorizedToProcessPassedProposal,
+    } = (snapshotProposal as SnapshotProposal).msg.payload.metadata;
 
     if (accountAuthorizedToProcessPassedProposal && account) {
       actionDisabledReasonsRef.current = {
@@ -186,9 +188,9 @@ export default function ProcessActionTribute(props: ProcessActionTributeProps) {
   useEffect(() => {
     // Proposals of this type will have this value stored in its snapshot
     // metadata.
-    const {accountAuthorizedToProcessPassedProposal} = (
-      snapshotProposal as SnapshotProposal
-    ).msg.payload.metadata;
+    const {
+      accountAuthorizedToProcessPassedProposal,
+    } = (snapshotProposal as SnapshotProposal).msg.payload.metadata;
 
     if (accountAuthorizedToProcessPassedProposal && account) {
       if (

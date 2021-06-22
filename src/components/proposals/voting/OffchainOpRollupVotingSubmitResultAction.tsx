@@ -99,8 +99,11 @@ export function OffchainOpRollupVotingSubmitResultAction(
 
   const {txEtherscanURL, txIsPromptOpen, txSend, txStatus} = useContractSend();
 
-  const {isDisabled, openWhyDisabledModal, WhyDisabledModal} =
-    useMemberActionDisabled();
+  const {
+    isDisabled,
+    openWhyDisabledModal,
+    WhyDisabledModal,
+  } = useMemberActionDisabled();
 
   const gasPrices = useETHGasPrice();
 
@@ -108,8 +111,8 @@ export function OffchainOpRollupVotingSubmitResultAction(
    * Variables
    */
 
-  const votingAdapterMethods =
-    daoProposalVotingAdapter?.getWeb3VotingAdapterContract().methods;
+  const votingAdapterMethods = daoProposalVotingAdapter?.getWeb3VotingAdapterContract()
+    .methods;
 
   const isInProcess =
     signatureStatus === Web3TxStatus.AWAITING_CONFIRM ||

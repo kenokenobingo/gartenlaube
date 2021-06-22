@@ -62,25 +62,31 @@ export function useAdaptersOrExtensions(): UseAdaptersOrExtensionsReturn {
   /**
    * Their hooks
    */
-  const [getRegisteredAdaptersAndExtensions, {called, data, error}] =
-    useLazyQuery(GET_ADAPTERS_AND_EXTENSIONS, {
-      pollInterval: GQL_QUERY_POLLING_INTERVAL,
-      variables: {
-        daoAddress: DaoRegistryContract?.contractAddress.toLowerCase(),
-      },
-    });
+  const [
+    getRegisteredAdaptersAndExtensions,
+    {called, data, error},
+  ] = useLazyQuery(GET_ADAPTERS_AND_EXTENSIONS, {
+    pollInterval: GQL_QUERY_POLLING_INTERVAL,
+    variables: {
+      daoAddress: DaoRegistryContract?.contractAddress.toLowerCase(),
+    },
+  });
 
   /**
    * State
    */
-  const [registeredAdaptersOrExtensions, setRegisteredAdaptersOrExtensions] =
-    useState<AdapterType[] | undefined>();
+  const [
+    registeredAdaptersOrExtensions,
+    setRegisteredAdaptersOrExtensions,
+  ] = useState<AdapterType[] | undefined>();
   const [
     unRegisteredAdaptersOrExtensions,
     setUnRegisteredAdaptersOrExtensions,
   ] = useState<Adapters[] | undefined>();
-  const [adapterExtensionStatus, setAdapterExtensionStatus] =
-    useState<AsyncStatus>(AsyncStatus.STANDBY);
+  const [
+    adapterExtensionStatus,
+    setAdapterExtensionStatus,
+  ] = useState<AsyncStatus>(AsyncStatus.STANDBY);
 
   const getAdaptersAndExtensionsCached = useCallback(
     getAdaptersAndExtensions,
@@ -108,8 +114,10 @@ export function useAdaptersOrExtensions(): UseAdaptersOrExtensionsReturn {
         >;
 
         // create a list of registered and un-registered adapters and extensions
-        const {registeredList, unRegisteredList} =
-          getAdaptersAndExtensionsCached(adapters, extensions);
+        const {
+          registeredList,
+          unRegisteredList,
+        } = getAdaptersAndExtensionsCached(adapters, extensions);
 
         setRegisteredAdaptersOrExtensions(registeredList);
         setUnRegisteredAdaptersOrExtensions(unRegisteredList);
