@@ -1,21 +1,42 @@
-import {render, screen, waitFor} from '@testing-library/react';
+import {render, screen, act, waitFor} from '@testing-library/react';
+import {createMockClient} from 'mock-apollo-client';
+
+import {GET_ADAPTERS_AND_EXTENSIONS, GET_DAO} from '../../gql';
+import {
+  adaptersAndExtensionsResponse,
+  daoResponse,
+} from '../../test/gqlResponses';
 
 import AdapterOrExtensionManager from './AdapterOrExtensionManager';
 import Wrapper from '../../test/Wrapper';
 
-describe('AdapterOrExtensionManager unit tests', () => {
-  test('should render dao manager', async () => {
-    render(
-      <Wrapper>
-        <AdapterOrExtensionManager />
-      </Wrapper>
-    );
+const mockClient = createMockClient();
 
-    expect(screen.getByText(/adapter\/extension manager/i)).toBeInTheDocument();
-    expect(
-      screen.getByText(
-        /connect your wallet to manage the DAO adapters and extensions/i
-      )
-    ).toBeInTheDocument();
+describe('AdapterOrExtensionManager unit tests', () => {
+  mockClient.setRequestHandler(GET_ADAPTERS_AND_EXTENSIONS, () =>
+    Promise.resolve(adaptersAndExtensionsResponse)
+  );
+
+  mockClient.setRequestHandler(GET_DAO, () => Promise.resolve(daoResponse));
+
+  test('should render initial dao manager view without wallet connection', async () => {
+    await act(async () => {
+      render(
+        <Wrapper useInit mockApolloClient={mockClient}>
+          <AdapterOrExtensionManager />
+        </Wrapper>
+      );
+
+      await waitFor(() => {
+        expect(
+          screen.getByText(/adapter\/extension manager/i)
+        ).toBeInTheDocument();
+        expect(
+          screen.getByText(
+            /connect your wallet to manage the DAO adapters and extensions/i
+          )
+        ).toBeInTheDocument();
+      });
+    });
   });
 });

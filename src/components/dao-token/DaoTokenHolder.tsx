@@ -62,7 +62,7 @@ export default function DaoTokenHolder(
 
       const holderData = holders?.find(
         (holder: any) =>
-          holder.member.delegateKey.toLowerCase() === account.toLowerCase()
+          holder.member?.delegateKey.toLowerCase() === account.toLowerCase()
       );
 
       holderData &&
@@ -89,7 +89,7 @@ export default function DaoTokenHolder(
   function getTokenImage() {
     try {
       toDataURL(image).then((dataUrl: any) => {
-        setTokenImageURL(dataUrl);
+        dataUrl && setTokenImageURL(dataUrl);
       });
     } catch (error) {
       console.log(error);
