@@ -36,11 +36,11 @@
 
 .checkbox-box {
   background-color: white;
-  border-radius: 3px;
+  border-radius: 0;
   cursor: pointer;
   display: inline-block;
   flex-shrink: 0;
-  border: 1px solid;
+  border: 2px solid;
 
   &.small {
     height: 1.2rem;
