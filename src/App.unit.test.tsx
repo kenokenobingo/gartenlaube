@@ -1,20 +1,10 @@
 import {screen, render, waitFor} from '@testing-library/react';
 import {useHistory} from 'react-router-dom';
-import {createMockClient} from 'mock-apollo-client';
-
-import {GET_TOKEN_HOLDER_BALANCES} from './gql';
-import {tokenHolderBalancesResponse} from './test/gqlResponses';
 
 import App from './App';
 import Wrapper from './test/Wrapper';
 
-const mockClient = createMockClient();
-
 describe('App unit tests', () => {
-  mockClient.setRequestHandler(GET_TOKEN_HOLDER_BALANCES, () =>
-    Promise.resolve(tokenHolderBalancesResponse)
-  );
-
   test('can render index page', async () => {
     render(
       <Wrapper>
@@ -47,7 +37,7 @@ describe('App unit tests', () => {
     }
 
     render(
-      <Wrapper mockApolloClient={mockClient}>
+      <Wrapper>
         <RenderToGovernance />
       </Wrapper>
     );
@@ -76,7 +66,7 @@ describe('App unit tests', () => {
     }
 
     render(
-      <Wrapper mockApolloClient={mockClient}>
+      <Wrapper>
         <CrappyPage />
       </Wrapper>
     );
