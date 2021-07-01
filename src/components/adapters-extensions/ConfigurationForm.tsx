@@ -78,7 +78,7 @@ export default function ConfigurationForm({
     txSend,
     txStatus,
   } = useContractSend();
-  const gasPrices = useETHGasPrice();
+  const {fast: fastGasPrice} = useETHGasPrice();
   const {connected, account} = useWeb3Modal();
   const {
     isParamInputValid,
@@ -157,8 +157,7 @@ export default function ConfigurationForm({
 
       const txArguments = {
         from: account || '',
-        // Set a fast gas price
-        ...(gasPrices ? {gasPrice: gasPrices.fast} : null),
+        ...(fastGasPrice ? {gasPrice: fastGasPrice} : null),
       };
 
       // Execute contract call to `removeExtension` or `replaceAdapter`
@@ -233,8 +232,7 @@ export default function ConfigurationForm({
 
       const txArguments = {
         from: account || '',
-        // Set a fast gas price
-        ...(gasPrices ? {gasPrice: gasPrices.fast} : null),
+        ...(fastGasPrice ? {gasPrice: fastGasPrice} : null),
       };
 
       setConfigureAdapterStatus(Web3TxStatus.AWAITING_CONFIRM);

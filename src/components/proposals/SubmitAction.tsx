@@ -69,7 +69,7 @@ export default function SubmitAction(props: SubmitActionProps) {
     signAndSendProposal,
   } = useSignAndSubmitProposal<SnapshotType.proposal>();
 
-  const gasPrices = useETHGasPrice();
+  const {fast: fastGasPrice} = useETHGasPrice();
 
   /**
    * Variables
@@ -154,8 +154,7 @@ export default function SubmitAction(props: SubmitActionProps) {
 
       const txArguments = {
         from: account || '',
-        // Set a fast gas price
-        ...(gasPrices ? {gasPrice: gasPrices.fast} : null),
+        ...(fastGasPrice ? {gasPrice: fastGasPrice} : null),
       };
 
       await txSend(

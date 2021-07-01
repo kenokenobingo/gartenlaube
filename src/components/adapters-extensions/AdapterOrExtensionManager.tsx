@@ -109,7 +109,7 @@ export default function AdapterOrExtensionManager() {
   const {initAdapterExtensionContract} = useInitAdapterExtensionContracts();
 
   const {txSend} = useContractSend();
-  const gasPrices = useETHGasPrice();
+  const {fast: fastGasPrice} = useETHGasPrice();
   const {
     isDisabled,
     openWhyDisabledModal,
@@ -340,8 +340,7 @@ export default function AdapterOrExtensionManager() {
 
       const txArguments = {
         from: account || '',
-        // Set a fast gas price
-        ...(gasPrices ? {gasPrice: gasPrices.fast} : null),
+        ...(fastGasPrice ? {gasPrice: fastGasPrice} : null),
       };
 
       const txSendMethod =
@@ -451,8 +450,7 @@ export default function AdapterOrExtensionManager() {
 
       const txArguments = {
         from: account || '',
-        // Set a fast gas price
-        ...(gasPrices ? {gasPrice: gasPrices.fast} : null),
+        ...(fastGasPrice ? {gasPrice: fastGasPrice} : null),
       };
 
       // Execute contract call for `addAdapters`

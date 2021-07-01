@@ -64,12 +64,9 @@ export default function ProcessAction(props: ProcessActionProps) {
 
   const {account, web3Instance} = useWeb3Modal();
   const {txEtherscanURL, txIsPromptOpen, txSend, txStatus} = useContractSend();
-  const {
-    isDisabled,
-    openWhyDisabledModal,
-    WhyDisabledModal,
-  } = useMemberActionDisabled(useMemberActionDisabledProps);
-  const gasPrices = useETHGasPrice();
+  const {isDisabled, openWhyDisabledModal, WhyDisabledModal} =
+    useMemberActionDisabled(useMemberActionDisabledProps);
+  const {fast: fastGasPrice} = useETHGasPrice();
 
   /**
    * Their hooks
@@ -123,8 +120,7 @@ export default function ProcessAction(props: ProcessActionProps) {
 
       const txArguments = {
         from: account || '',
-        // Set a fast gas price
-        ...(gasPrices ? {gasPrice: gasPrices.fast} : null),
+        ...(fastGasPrice ? {gasPrice: fastGasPrice} : null),
       };
 
       const tx = await txSend(
