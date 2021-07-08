@@ -47,7 +47,7 @@ export default function Nav() {
             <NavLinks />
             <DaoTokenHolder border={'1px solid #c3d6dc'} />
             <div className="nav-header__walletconnect-button-container">
-              <Web3ModalButton showWalletETHBadge />
+              <Web3ModalButton />
             </div>
           </div>
         </div>
