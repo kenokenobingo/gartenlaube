@@ -46,7 +46,7 @@ function RenderWrapper(props: React.PropsWithChildren<any>): JSX.Element {
         <div className="titlebar">
           <h2 className="titlebar__title">Water</h2>
           <button className="titlebar__action" onClick={triggerIrrigation}>
-            Triggier Irrigation
+            Trigger Irrigation
           </button>
         </div>
 
