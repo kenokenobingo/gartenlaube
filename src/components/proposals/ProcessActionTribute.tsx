@@ -81,7 +81,7 @@ export default function ProcessActionTribute(props: ProcessActionTributeProps) {
    */
 
   const TributeContract = useSelector(
-    (state: StoreState) => state.contracts?.TributeContract
+    (s: StoreState) => s.contracts?.TributeContract
   );
   const daoRegistryContract = useSelector(
     (s: StoreState) => s.contracts.DaoRegistryContract
@@ -306,13 +306,17 @@ export default function ProcessActionTribute(props: ProcessActionTributeProps) {
       );
 
       if (tx) {
-        // suggest adding DAO token to wallet
-        await addTokenToWallet();
-
         // re-fetch member
         await dispatch(
-          getConnectedMember({account, daoRegistryContract, web3Instance})
+          getConnectedMember({
+            account,
+            daoRegistryContract,
+            web3Instance,
+          })
         );
+
+        // suggest adding DAO token to wallet
+        await addTokenToWallet();
       }
     } catch (error) {
       setSubmitError(error);
