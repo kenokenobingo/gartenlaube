@@ -19,6 +19,7 @@ import {
   TRIBUTE_CONTRACT_ADDRESS,
   TRIBUTE_NFT_CONTRACT_ADDRESS,
   VOTING_CONTRACT_ADDRESS,
+  WATER_CONTRACT_ADDRESS
 } from '../../config';
 
 type AdapterProps = {
@@ -163,6 +164,13 @@ export const defaultAdaptersAndExtensions: AdaptersAndExtensionsType[] = [
       },
     ],
     optionDefaultTarget: DaoAdapterConstants.VOTING,
+  },
+  {
+    name: DaoAdapterConstants.WATER,
+    adapterId: getAdapterOrExtensionId(DaoAdapterConstants.WATER),
+    contractAddress: WATER_CONTRACT_ADDRESS[DEFAULT_CHAIN],
+    description:
+      'Allows the members to trigger irrigation.',
   },
   {
     name: DaoAdapterConstants.BANK,

@@ -21,6 +21,7 @@ import {
   CONTRACT_TRIBUTE,
   CONTRACT_VOTING_OP_ROLLUP,
   CONTRACT_VOTING,
+  CONTRACT_WATER
 } from '../actions';
 import {ContractsState} from './types';
 
@@ -45,6 +46,7 @@ const initialState = {
   TributeContract: null,
   TributeNFTContract: null,
   VotingContract: null,
+  WaterContract: null
 };
 
 export default function reducer(
@@ -98,6 +100,8 @@ export default function reducer(
       return contractVoting(state, payload);
     case CONTRACT_VOTING_OP_ROLLUP:
       return contractVoting(state, payload);
+    case CONTRACT_WATER:
+      return contractWater(state,payload);
 
     default:
       return state;
@@ -167,6 +171,10 @@ function contractTribute(state: ContractsState, payload: any): ContractsState {
 
 function contractVoting(state: ContractsState, payload: any): ContractsState {
   return {...state, VotingContract: {...payload}};
+}
+
+function contractWater(state: ContractsState, payload: any): ContractsState {
+  return {...state, WaterContract: {...payload}};
 }
 
 function contractManaging(state: ContractsState, payload: any): ContractsState {

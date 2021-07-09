@@ -86,6 +86,7 @@ export function getAccessControlLayer(
       INTERNAL_TRANSFER: true,
     },
     [DaoAdapterConstants.VOTING]: {},
+    [DaoAdapterConstants.WATER]: {},
     [DaoAdapterConstants.BANK]: {
       WITHDRAW: true,
       SUB_FROM_BALANCE: true,

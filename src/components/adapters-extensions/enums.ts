@@ -21,6 +21,7 @@ export enum DaoAdapterConstants {
   TRIBUTE = 'tribute',
   TRIBUTE_NFT = 'tribute-nft',
   VOTING = 'voting',
+  WATER = 'water',
 }
 
 export enum DaoExtensionConstants {

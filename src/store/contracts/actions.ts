@@ -47,7 +47,8 @@ type ContractAction =
   | typeof CONTRACT_TRIBUTE
   | typeof CONTRACT_TRIBUTE_NFT
   | typeof CONTRACT_VOTING
-  | typeof CONTRACT_VOTING_OP_ROLLUP;
+  | typeof CONTRACT_VOTING_OP_ROLLUP
+  | typeof CONTRACT_WATER;
 
 export const CLEAR_CONTRACTS = 'CLEAR_CONTRACTS';
 export const CONTRACT_BANK_ADAPTER = 'CONTRACT_BANK_ADAPTER';
@@ -71,6 +72,7 @@ export const CONTRACT_TRIBUTE = 'CONTRACT_TRIBUTE';
 export const CONTRACT_TRIBUTE_NFT = 'CONTRACT_TRIBUTE_NFT';
 export const CONTRACT_VOTING = 'CONTRACT_VOTING';
 export const CONTRACT_VOTING_OP_ROLLUP = 'CONTRACT_VOTING_OP_ROLLUP';
+export const CONTRACT_WATER = 'CONTRACT_WATER';
 
 export function clearContracts(): Record<'type', typeof CLEAR_CONTRACTS> {
   return {
