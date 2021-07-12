@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {useState} from 'react';
 // import {useHistory} from 'react-router-dom';
 import {useWeb3Modal} from '../../components/web3/hooks';
@@ -21,7 +21,10 @@ export default function Water() {
    */
 
   const [waterContract, setWaterContract] = useState<Web3Contract>();
-  const {web3Instance} = useWeb3Modal();
+  const [irrigationStatus, setIrrigationStatus] = useState<String>();
+  const {connected, account, web3Instance} = useWeb3Modal();
+
+  // const isConnected = connected && account;
 
   // const web3 = new Web3();
 
@@ -53,6 +56,30 @@ export default function Water() {
     }
   }
 
+  function getIrrigationStatus() {
+    getWaterContract();
+    if (!account || !waterContract) {
+      return;
+    }
+
+    try {
+      waterContract.methods
+        .getHumidity()
+        .call()
+        .then(function (error: string, result: string) {
+          setIrrigationStatus(result);
+          console.log(result);
+          console.log(error);
+        });
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  useEffect(() => {
+    getIrrigationStatus();
+  });
+
   function triggerIrrigation(event: React.MouseEvent<HTMLButtonElement>) {
     getWaterContract();
     if (!waterContract) {
@@ -60,7 +87,10 @@ export default function Water() {
     }
 
     try {
-      waterContract.methods.getHumidity.then(function (error: string, result: string) {
+      waterContract.methods.getHumidity.then(function (
+        error: string,
+        result: string
+      ) {
         console.log(result);
         console.log(error);
       });
@@ -75,6 +105,7 @@ export default function Water() {
       <button className="titlebar__action" onClick={triggerIrrigation}>
         Trigger Irrigation
       </button>
+      <p>{irrigationStatus}</p>
     </RenderWrapper>
   );
 }
