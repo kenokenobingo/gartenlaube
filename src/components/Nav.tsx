@@ -28,11 +28,6 @@ export function NavLinks() {
             <span>Tribute</span>
           </NavLink>
         </li>
-        <li tabIndex={0}>
-          <NavLink to="/water">
-            <span>Water</span>
-          </NavLink>
-        </li>
       </ul>
     </nav>
   );
