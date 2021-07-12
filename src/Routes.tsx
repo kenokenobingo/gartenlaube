@@ -18,6 +18,7 @@ import TransferDetails from './pages/transfers/TransferDetails';
 import Transfers from './pages/transfers/Transfers';
 import TributeDetails from './pages/tributes/TributeDetails';
 import Tributes from './pages/tributes/Tributes';
+import Water from './pages/water/Water';
 
 const proposalIdParameter: string = ':proposalId';
 
@@ -80,6 +81,12 @@ export default function Routes() {
           exact
           path={`/tributes/${proposalIdParameter}`}
           render={() => <TributeDetails />}
+        />,
+        <Route
+          key="water"
+          exact
+          path="/water"
+          render={() => <Water />}
         />,
         <Route
           key="governance-proposal"
