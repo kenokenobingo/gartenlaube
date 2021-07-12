@@ -22,7 +22,7 @@ export default function Water() {
 
   const [waterContract, setWaterContract] = useState<Web3Contract>();
   const [irrigationStatus, setIrrigationStatus] = useState<String>();
-  const {connected, account, web3Instance} = useWeb3Modal();
+  const {account, web3Instance} = useWeb3Modal();
 
   // const isConnected = connected && account;
 
