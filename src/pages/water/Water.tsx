@@ -24,7 +24,6 @@ export default function Water() {
   const [waterContract, setWaterContract] = useState<Web3Contract>();
   const [irrigationStatus, setIrrigationStatus] = useState<String>();
   const {account, web3Instance} = useWeb3Modal();
-  const [statusText, setStatusText] = useState<String>("Undefined");
 
   const waterAddressValue = '0x8Ed9814B3b8759FFD948E87dFcc8C6196c0Dc4f1';
 
