@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useCallback, useEffect} from 'react';
 import {useState} from 'react';
 // import {useHistory} from 'react-router-dom';
 import {useWeb3Modal} from '../../components/web3/hooks';
@@ -9,7 +9,8 @@ import {AbiItem} from 'web3-utils';
 
 import FadeIn from '../../components/common/FadeIn';
 import Wrap from '../../components/common/Wrap';
-import {WATER_CONTRACT_ADDRESS} from '../../config';
+import { DAO_REGISTRY_CONTRACT_ADDRESS } from '../../config';
+// import {WATER_CONTRACT_ADDRESS} from '../../config';
 
 export default function Water() {
   /**
@@ -23,20 +24,36 @@ export default function Water() {
   const [waterContract, setWaterContract] = useState<Web3Contract>();
   const [irrigationStatus, setIrrigationStatus] = useState<String>();
   const {account, web3Instance} = useWeb3Modal();
+  const [statusText, setStatusText] = useState<String>("Undefined");
 
-  // const isConnected = connected && account;
-
-  // const web3 = new Web3();
-
-  const waterAddressValue = String(WATER_CONTRACT_ADDRESS);
+  const waterAddressValue = '0x8Ed9814B3b8759FFD948E87dFcc8C6196c0Dc4f1';
 
   /**
    * Functions
    */
 
+  const getWaterContractCached = useCallback(getWaterContract, [
+    waterAddressValue,
+    web3Instance,
+  ]);
+
+  const getIrrigationStatusCached = useCallback(getIrrigationStatus, [
+    account,
+    waterContract,
+  ]);
+
+  useEffect(() => {
+    getWaterContractCached();
+  }, [getWaterContractCached]);
+
+  useEffect(() => {
+    getIrrigationStatusCached();
+  }, [getIrrigationStatusCached]);
+
   async function getWaterContract() {
     if (!web3Instance || !waterAddressValue) {
       setWaterContract(undefined);
+      console.log("water contract not found");
       return;
     }
 
@@ -50,50 +67,43 @@ export default function Water() {
         waterAddressValue
       );
       setWaterContract(instance);
+      console.log("water contract set: " + instance);
+      // console.log("methods: " + instance.methods);
     } catch (error) {
       console.error(error);
       setWaterContract(undefined);
     }
   }
 
-  function getIrrigationStatus() {
-    getWaterContract();
+  async function getIrrigationStatus() {
     if (!account || !waterContract) {
+      console.log("error getting irrigation status");
       return;
     }
 
     try {
-      waterContract.methods
-        .getHumidity()
-        .call()
-        .then(function (error: string, result: string) {
-          setIrrigationStatus(result);
-          console.log(result);
-          console.log(error);
-        });
+      const result = await waterContract.methods.getHumidity().call();
+      setIrrigationStatus(result);
+      console.log("Result " + result);
     } catch (error) {
       console.error(error);
     }
   }
 
-  useEffect(() => {
-    getIrrigationStatus();
-  });
-
-  function triggerIrrigation(event: React.MouseEvent<HTMLButtonElement>) {
-    getWaterContract();
+  async function triggerIrrigation(event: React.MouseEvent<HTMLButtonElement>) {
     if (!waterContract) {
       return;
     }
 
     try {
-      waterContract.methods.getHumidity.then(function (
-        error: string,
-        result: string
-      ) {
-        console.log(result);
-        console.log(error);
-      });
+      waterContract.methods
+        .triggerWatering(20, DAO_REGISTRY_CONTRACT_ADDRESS)
+        .send()
+        .then(function (error: string, result: string) {
+          setIrrigationStatus(result);
+          console.log("Result: " + result);
+          console.log("Error: " + error);
+        });
     } catch (error) {
       console.error(error);
     }
@@ -104,6 +114,9 @@ export default function Water() {
       <h2 className="titlebar__title">Water</h2>
       <button className="titlebar__action" onClick={triggerIrrigation}>
         Trigger Irrigation
+      </button>
+      <button className="titlebar__action" onClick={getIrrigationStatus}>
+        Get Status
       </button>
       <p>{irrigationStatus}</p>
     </RenderWrapper>

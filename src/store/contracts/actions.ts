@@ -202,6 +202,20 @@ export function initContractVotingOpRollup(
   });
 }
 
+export function initContractWater(
+  web3Instance: Web3,
+  contractAddress?: string
+) {
+  return initContractThunkFactory({
+    actionType: CONTRACT_WATER,
+    adapterNameForRedux: DaoAdapterConstants.WATER,
+    adapterOrExtensionName: ContractAdapterNames.water,
+    contractAddress,
+    lazyImport: () => import('../../truffle-contracts/WaterContract.json'),
+    web3Instance,
+  });
+}
+
 export function initContractOnboarding(
   web3Instance: Web3,
   contractAddress?: string
