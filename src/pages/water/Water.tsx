@@ -1,5 +1,4 @@
-import React, {useCallback, useEffect} from 'react';
-import {useState} from 'react';
+import React, {useState, useCallback, useEffect} from 'react';
 // import {useHistory} from 'react-router-dom';
 import {useWeb3Modal} from '../../components/web3/hooks';
 // import Web3 from 'web3';
@@ -9,25 +8,20 @@ import {AbiItem} from 'web3-utils';
 
 import FadeIn from '../../components/common/FadeIn';
 import Wrap from '../../components/common/Wrap';
-import { DAO_REGISTRY_CONTRACT_ADDRESS } from '../../config';
+import {DAO_REGISTRY_CONTRACT_ADDRESS} from '../../config';
 // import {WATER_CONTRACT_ADDRESS} from '../../config';
 
 export default function Water() {
   /**
-   * Render
-   */
-
-   const {account, web3Instance} = useWeb3Modal();
-
-  /**
    * Their hooks
    */
 
+  const {account, web3Instance} = useWeb3Modal();
   const [waterContract, setWaterContract] = useState<Web3Contract>();
   const [irrigationStatus, setIrrigationStatus] = useState<String>();
 
-
-  const waterAddressValue :string = '0x8Ed9814B3b8759FFD948E87dFcc8C6196c0Dc4f1';
+  const waterAddressValue: string =
+    '0x8Ed9814B3b8759FFD948E87dFcc8C6196c0Dc4f1';
 
   /**
    * Functions
@@ -54,7 +48,7 @@ export default function Water() {
   async function getWaterContract() {
     if (!web3Instance || !waterAddressValue) {
       setWaterContract(undefined);
-      console.log("water contract not found");
+      console.log('water contract not found');
       return;
     }
 
@@ -68,8 +62,8 @@ export default function Water() {
         waterAddressValue
       );
       setWaterContract(instance);
-      console.log("water contract set: " + instance);
-      console.log("methods: " + instance.methods);
+      console.log('water contract set: ' + instance);
+      console.log('methods: ' + instance.methods);
       var method;
 
       for (method in instance.methods) {
@@ -84,46 +78,23 @@ export default function Water() {
   }
 
   async function getIrrigationStatus() {
-    if (!account || !waterContract) {
-      console.log("error getting irrigation status");
+    if (!account || !waterContract) {
+      console.log('error getting irrigation status');
       return;
     }
 
     try {
       const result = await waterContract.methods.getIrrigation().call();
       setIrrigationStatus(result);
-      console.log("Result " + result);
+      console.log('Result ' + result);
     } catch (error) {
       console.error(error);
       setIrrigationStatus(undefined);
     }
   }
 
-  async function triggerIrrigation(event: React.MouseEvent<HTMLButtonElement>) {
-    if (!waterContract) {
-      return;
-    }
-
-    try {
-      waterContract.methods
-        .triggerWatering(20, DAO_REGISTRY_CONTRACT_ADDRESS)
-        .send()
-        .then(function (error: string, result: string) {
-          setIrrigationStatus(result);
-          console.log("Result: " + result);
-          console.log("Error: " + error);
-        });
-    } catch (error) {
-      console.error(error);
-    }
-  }
-
   return (
     <RenderWrapper>
-      <h2 className="titlebar__title">Water</h2>
-      <button className="titlebar__action" onClick={triggerIrrigation}>
-        Trigger Irrigation
-      </button>
       <button className="titlebar__action" onClick={getIrrigationStatus}>
         Get Status
       </button>
@@ -140,7 +111,9 @@ function RenderWrapper(props: React.PropsWithChildren<any>): JSX.Element {
   return (
     <Wrap className="section-wrapper">
       <FadeIn>
-        <div className="titlebar"></div>
+        <div className="titlebar">
+          <h2 className="titlebar__title">Water</h2>
+        </div>
         {/* RENDER CHILDREN */}
         {props.children}
       </FadeIn>
