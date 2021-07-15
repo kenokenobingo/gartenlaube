@@ -17,15 +17,17 @@ export default function Water() {
    * Render
    */
 
+   const {account, web3Instance} = useWeb3Modal();
+
   /**
    * Their hooks
    */
 
   const [waterContract, setWaterContract] = useState<Web3Contract>();
   const [irrigationStatus, setIrrigationStatus] = useState<String>();
-  const {account, web3Instance} = useWeb3Modal();
 
-  const waterAddressValue = '0x8Ed9814B3b8759FFD948E87dFcc8C6196c0Dc4f1';
+
+  const waterAddressValue :string = '0x8Ed9814B3b8759FFD948E87dFcc8C6196c0Dc4f1';
 
   /**
    * Functions
@@ -67,7 +69,14 @@ export default function Water() {
       );
       setWaterContract(instance);
       console.log("water contract set: " + instance);
-      // console.log("methods: " + instance.methods);
+      console.log("methods: " + instance.methods);
+      var method;
+
+      for (method in instance.methods) {
+        console.log(method);
+      }
+
+      return instance;
     } catch (error) {
       console.error(error);
       setWaterContract(undefined);
@@ -75,17 +84,18 @@ export default function Water() {
   }
 
   async function getIrrigationStatus() {
-    if (!account || !waterContract) {
+    if (!account || !waterContract) {
       console.log("error getting irrigation status");
       return;
     }
 
     try {
-      const result = await waterContract.methods.getHumidity().call();
+      const result = await waterContract.methods.getIrrigation().call();
       setIrrigationStatus(result);
       console.log("Result " + result);
     } catch (error) {
       console.error(error);
+      setIrrigationStatus(undefined);
     }
   }
 
