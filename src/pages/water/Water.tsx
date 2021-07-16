@@ -1,7 +1,6 @@
 import React, {useState, useCallback, useEffect} from 'react';
 // import {useHistory} from 'react-router-dom';
-import {useWeb3Modal} from '../../components/web3/hooks';
-// import Web3 from 'web3';
+import Web3 from 'web3';
 import {Contract as Web3Contract} from 'web3-eth-contract/types';
 
 import {AbiItem} from 'web3-utils';
@@ -9,31 +8,32 @@ import {AbiItem} from 'web3-utils';
 import FadeIn from '../../components/common/FadeIn';
 import Wrap from '../../components/common/Wrap';
 // import {DAO_REGISTRY_CONTRACT_ADDRESS} from '../../config';
-// import {WATER_CONTRACT_ADDRESS} from '../../config';
+import {DEFAULT_CHAIN, WATER_CONTRACT_ADDRESS} from '../../config';
+import { ETHEREUM_PROVIDER_URL } from '../../config';
+
+const web3 = new Web3(Web3.givenProvider || ETHEREUM_PROVIDER_URL);
 
 export default function Water() {
   /**
    * Their hooks
    */
 
-  const {account, web3Instance} = useWeb3Modal();
+  // const {account, web3Instance} = useWeb3Modal();
+
   const [waterContract, setWaterContract] = useState<Web3Contract>();
   const [irrigationStatus, setIrrigationStatus] = useState<String>();
 
-  const waterAddressValue: string =
-    '0x8Ed9814B3b8759FFD948E87dFcc8C6196c0Dc4f1';
+  const waterAddressValue: string = WATER_CONTRACT_ADDRESS[DEFAULT_CHAIN];
 
   /**
    * Functions
    */
 
   const getWaterContractCached = useCallback(getWaterContract, [
-    waterAddressValue,
-    web3Instance,
+    waterAddressValue
   ]);
 
   const getIrrigationStatusCached = useCallback(getIrrigationStatus, [
-    account,
     waterContract,
   ]);
 
@@ -46,7 +46,7 @@ export default function Water() {
   }, [getIrrigationStatusCached]);
 
   async function getWaterContract() {
-    if (!web3Instance || !waterAddressValue) {
+    if (!web3|| !waterAddressValue) {
       setWaterContract(undefined);
       console.log('water contract not found');
       return;
@@ -57,7 +57,7 @@ export default function Water() {
         '../../truffle-contracts/WaterContract.json'
       );
       const waterContract: AbiItem[] = lazyWaterABI as any;
-      const instance = new web3Instance.eth.Contract(
+      const instance = new web3.eth.Contract(
         waterContract,
         waterAddressValue
       );
@@ -78,14 +78,14 @@ export default function Water() {
   }
 
   async function getIrrigationStatus() {
-    if (!account || !waterContract) {
+    if (!waterContract) {
       console.log('error getting irrigation status');
       return;
     }
 
     try {
       const result = await waterContract.methods.getIrrigation().call();
-      setIrrigationStatus(result);
+      setIrrigationStatus(String(result));
       console.log('Result ' + result);
     } catch (error) {
       console.error(error);
