@@ -22,6 +22,7 @@ export default function Water() {
 
   const [waterContract, setWaterContract] = useState<Web3Contract>();
   const [irrigationStatus, setIrrigationStatus] = useState<String>();
+  const [renderStatus, setRenderStatus] = useState<String>();
 
   const waterAddressValue: string = WATER_CONTRACT_ADDRESS[DEFAULT_CHAIN];
 
@@ -35,6 +36,7 @@ export default function Water() {
 
   const getIrrigationStatusCached = useCallback(getIrrigationStatus, [
     waterContract,
+    irrigationStatus,
   ]);
 
   useEffect(() => {
@@ -84,6 +86,14 @@ export default function Water() {
       const result = await waterContract.methods.getIrrigation().call();
       setIrrigationStatus(String(result));
       console.log('Result ' + result);
+
+      if (irrigationStatus) {
+        setRenderStatus('🟢 The pump is running.');
+      } else if (!irrigationStatus) {
+        setRenderStatus('🔴 The pump is not running.');
+      } else {
+        setRenderStatus('🚨 Error: Cannot determine status.');
+      }
     } catch (error) {
       console.error(error);
       setIrrigationStatus(undefined);
@@ -95,7 +105,7 @@ export default function Water() {
       <button className="titlebar__action" onClick={getIrrigationStatus}>
         Get Status
       </button>
-      <p>{irrigationStatus}</p>
+      <p>{renderStatus}</p>
     </RenderWrapper>
   );
 }
