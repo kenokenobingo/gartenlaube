@@ -50,7 +50,7 @@ export default function Nav() {
           <div className="nav-header__menu-container">
             {/* NAV */}
             <NavLinks />
-            <DaoTokenHolder border={'1px solid #c3d6dc'} />
+            <DaoTokenHolder border={'2px solid #000'} />
             <div className="nav-header__walletconnect-button-container">
               <Web3ModalButton />
             </div>
