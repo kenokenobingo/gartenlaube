@@ -96,7 +96,7 @@ export default function Water() {
       }
     } catch (error) {
       console.error(error);
-      setIrrigationStatus(undefined);
+      setIrrigationStatus("");
       setRenderStatus('🚨 Error: Cannot determine status.');
     }
   }
