@@ -9,7 +9,7 @@ import FadeIn from '../../components/common/FadeIn';
 import Wrap from '../../components/common/Wrap';
 // import {DAO_REGISTRY_CONTRACT_ADDRESS} from '../../config';
 import {DEFAULT_CHAIN, WATER_CONTRACT_ADDRESS} from '../../config';
-import { ETHEREUM_PROVIDER_URL } from '../../config';
+import {ETHEREUM_PROVIDER_URL} from '../../config';
 
 const web3 = new Web3(Web3.givenProvider || ETHEREUM_PROVIDER_URL);
 
@@ -30,7 +30,7 @@ export default function Water() {
    */
 
   const getWaterContractCached = useCallback(getWaterContract, [
-    waterAddressValue
+    waterAddressValue,
   ]);
 
   const getIrrigationStatusCached = useCallback(getIrrigationStatus, [
@@ -46,7 +46,7 @@ export default function Water() {
   }, [getIrrigationStatusCached]);
 
   async function getWaterContract() {
-    if (!web3|| !waterAddressValue) {
+    if (!web3 || !waterAddressValue) {
       setWaterContract(undefined);
       console.log('water contract not found');
       return;
@@ -57,10 +57,7 @@ export default function Water() {
         '../../truffle-contracts/WaterContract.json'
       );
       const waterContract: AbiItem[] = lazyWaterABI as any;
-      const instance = new web3.eth.Contract(
-        waterContract,
-        waterAddressValue
-      );
+      const instance = new web3.eth.Contract(waterContract, waterAddressValue);
       setWaterContract(instance);
       console.log('water contract set: ' + instance);
       console.log('methods: ' + instance.methods);
