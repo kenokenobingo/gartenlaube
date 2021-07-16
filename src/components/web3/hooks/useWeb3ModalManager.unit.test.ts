@@ -153,17 +153,13 @@ describe('useWeb3ModalManager unit tests', () => {
     setLocal('WEB3_CONNECT_CACHED_PROVIDER', 'injected');
 
     await act(async () => {
-      const {
-        result,
-        waitForValueToChange,
-        waitFor,
-        rerender,
-      } = await renderHook(() =>
-        useWeb3ModalManager({
-          defaultTheme: DefaultTheme.LIGHT,
-          providerOptions,
-        })
-      );
+      const {result, waitForValueToChange, waitFor, rerender} =
+        await renderHook(() =>
+          useWeb3ModalManager({
+            defaultTheme: DefaultTheme.LIGHT,
+            providerOptions,
+          })
+        );
 
       // Assert initial
       expect(result.current.account).toBe(undefined);
@@ -232,17 +228,13 @@ describe('useWeb3ModalManager unit tests', () => {
     setLocal('WEB3_CONNECT_CACHED_PROVIDER', 'injected');
 
     await act(async () => {
-      const {
-        result,
-        waitForValueToChange,
-        waitFor,
-        rerender,
-      } = await renderHook(() =>
-        useWeb3ModalManager({
-          defaultTheme: DefaultTheme.LIGHT,
-          providerOptions,
-        })
-      );
+      const {result, waitForValueToChange, waitFor, rerender} =
+        await renderHook(() =>
+          useWeb3ModalManager({
+            defaultTheme: DefaultTheme.LIGHT,
+            providerOptions,
+          })
+        );
 
       // Assert initial
       expect(result.current.account).toBe(undefined);
@@ -582,17 +574,13 @@ describe('useWeb3ModalManager unit tests', () => {
     setLocal('WEB3_CONNECT_CACHED_PROVIDER', 'injected');
 
     await act(async () => {
-      const {
-        result,
-        waitForValueToChange,
-        waitFor,
-        rerender,
-      } = await renderHook(() =>
-        useWeb3ModalManager({
-          defaultTheme: DefaultTheme.LIGHT,
-          providerOptions,
-        })
-      );
+      const {result, waitForValueToChange, waitFor, rerender} =
+        await renderHook(() =>
+          useWeb3ModalManager({
+            defaultTheme: DefaultTheme.LIGHT,
+            providerOptions,
+          })
+        );
 
       /**
        * Re-render so we have time to set the mocks. Otherwise, it's not possible to beat the

@@ -82,12 +82,7 @@ export default function Routes() {
           path={`/tributes/${proposalIdParameter}`}
           render={() => <TributeDetails />}
         />,
-        <Route
-          key="water"
-          exact
-          path="/water"
-          render={() => <Water />}
-        />,
+        <Route key="water" exact path="/water" render={() => <Water />} />,
         <Route
           key="governance-proposal"
           exact

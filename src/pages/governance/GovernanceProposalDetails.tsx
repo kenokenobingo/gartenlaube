@@ -25,12 +25,8 @@ export default function GovernanceProposalDetails() {
    * Our hooks
    */
 
-  const {
-    proposalData,
-    proposalError,
-    proposalNotFound,
-    proposalStatus,
-  } = useProposalOrDraft(proposalId, SnapshotType.proposal);
+  const {proposalData, proposalError, proposalNotFound, proposalStatus} =
+    useProposalOrDraft(proposalId, SnapshotType.proposal);
 
   const {defaultChainError} = useIsDefaultChain();
 

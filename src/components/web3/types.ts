@@ -41,7 +41,7 @@ export enum ContractAdapterNames {
   tribute = 'tribute',
   tribute_nft = 'tribute-nft',
   voting = 'voting',
-  water = 'water'
+  water = 'water',
 }
 
 /**

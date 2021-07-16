@@ -155,7 +155,8 @@ export const WALLETCONNECT_PROVIDER_OPTIONS = {
  */
 
 // If developing locally, include your DaoRegistry contract address in your `.env` file.
-export const DAO_REGISTRY_CONTRACT_ADDRESS = REACT_APP_DAO_REGISTRY_CONTRACT_ADDRESS;
+export const DAO_REGISTRY_CONTRACT_ADDRESS =
+  REACT_APP_DAO_REGISTRY_CONTRACT_ADDRESS;
 
 export const DAO_FACTORY_CONTRACT_ADDRESS = {
   [CHAINS.MAINNET]: '',
@@ -242,7 +243,7 @@ export const WATER_CONTRACT_ADDRESS = {
   [CHAINS.GOERLI]: '',
   [CHAINS.KOVAN]: '',
   [CHAINS.GANACHE]: '0x8Ed9814B3b8759FFD948E87dFcc8C6196c0Dc4f1',
-}
+};
 
 export const CONFIGURATION_CONTRACT_ADDRESS = {
   [CHAINS.MAINNET]: '',

@@ -217,7 +217,8 @@ export default function CreateMembershipProposal() {
             metadata: {
               proposalAmountValues,
               submitActionArgs,
-              accountAuthorizedToProcessPassedProposal: proposerAddressToChecksum,
+              accountAuthorizedToProcessPassedProposal:
+                proposerAddressToChecksum,
             },
           },
           adapterName: ContractAdapterNames.onboarding,

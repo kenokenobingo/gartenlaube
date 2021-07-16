@@ -130,16 +130,12 @@ export function useProposals({
   const [proposals, setProposals] = useState<ProposalData[]>(INITIAL_ARRAY);
 
   // The overall status of the async data being fetched
-  const [
-    proposalsInclusiveStatus,
-    setProposalsInclusiveStatus,
-  ] = useState<AsyncStatus>(AsyncStatus.STANDBY);
+  const [proposalsInclusiveStatus, setProposalsInclusiveStatus] =
+    useState<AsyncStatus>(AsyncStatus.STANDBY);
 
   // Any error of the async data being fetched
-  const [
-    proposalsInclusiveError,
-    setProposalsInclusiveError,
-  ] = useState<Error>();
+  const [proposalsInclusiveError, setProposalsInclusiveError] =
+    useState<Error>();
 
   /**
    * Selectors

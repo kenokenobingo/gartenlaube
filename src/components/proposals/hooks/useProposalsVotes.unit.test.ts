@@ -57,55 +57,57 @@ describe('useProposalsVotes unit tests', () => {
                * @note Maintain the same order as the contract's struct.
                * @note We use the same, single result for any off-chain votes repsonses for testing only.
                */
-              const offchainVotesDataResponse = web3Instance.eth.abi.encodeParameter(
-                {
-                  Voting: {
-                    snapshot: 'uint256',
-                    reporter: 'address',
-                    resultRoot: 'bytes32',
-                    nbYes: 'uint256',
-                    nbNo: 'uint256',
-                    startingTime: 'uint256',
-                    gracePeriodStartingTime: 'uint256',
-                    forceFailed: 'bool',
-                    isChallenged: 'bool',
-                    fallbackVotesCount: 'uint256',
+              const offchainVotesDataResponse =
+                web3Instance.eth.abi.encodeParameter(
+                  {
+                    Voting: {
+                      snapshot: 'uint256',
+                      reporter: 'address',
+                      resultRoot: 'bytes32',
+                      nbYes: 'uint256',
+                      nbNo: 'uint256',
+                      startingTime: 'uint256',
+                      gracePeriodStartingTime: 'uint256',
+                      forceFailed: 'bool',
+                      isChallenged: 'bool',
+                      fallbackVotesCount: 'uint256',
+                    },
                   },
-                },
-                {
-                  snapshot: '8376297',
-                  reporter: '0xf9731Ad60BeCA05E9FB7aE8Dd4B63BFA49675b68',
-                  resultRoot:
-                    '0x9298a7fccdf7655408a8106ff03c9cbf0610082cc0f00dfe4c8f73f57a60df71',
-                  nbYes: '1',
-                  nbNo: '0',
-                  startingTime: '1617878162',
-                  gracePeriodStartingTime: '1617964640',
-                  forceFailed: false,
-                  isChallenged: false,
-                  fallbackVotesCount: '0',
-                }
-              );
+                  {
+                    snapshot: '8376297',
+                    reporter: '0xf9731Ad60BeCA05E9FB7aE8Dd4B63BFA49675b68',
+                    resultRoot:
+                      '0x9298a7fccdf7655408a8106ff03c9cbf0610082cc0f00dfe4c8f73f57a60df71',
+                    nbYes: '1',
+                    nbNo: '0',
+                    startingTime: '1617878162',
+                    gracePeriodStartingTime: '1617964640',
+                    forceFailed: false,
+                    isChallenged: false,
+                    fallbackVotesCount: '0',
+                  }
+                );
 
               /**
                * @note Maintain the same order as the contract's struct.
                */
-              const onchainVotesDataResponse = web3Instance.eth.abi.encodeParameter(
-                {
-                  Voting: {
-                    nbYes: 'uint256',
-                    nbNo: 'uint256',
-                    startingTime: 'uint256',
-                    blockNumber: 'uint256',
+              const onchainVotesDataResponse =
+                web3Instance.eth.abi.encodeParameter(
+                  {
+                    Voting: {
+                      nbYes: 'uint256',
+                      nbNo: 'uint256',
+                      startingTime: 'uint256',
+                      blockNumber: 'uint256',
+                    },
                   },
-                },
-                {
-                  blockNumber: '10',
-                  nbNo: '50',
-                  nbYes: '100',
-                  startingTime: '1617878162',
-                }
-              );
+                  {
+                    blockNumber: '10',
+                    nbNo: '50',
+                    nbYes: '100',
+                    startingTime: '1617878162',
+                  }
+                );
 
               // Mock votes data responses
               mockWeb3Provider.injectResult(
@@ -147,8 +149,7 @@ describe('useProposalsVotes unit tests', () => {
             OffchainVotingContract: {
               '0': '8376297',
               '1': '0xf9731Ad60BeCA05E9FB7aE8Dd4B63BFA49675b68',
-              '2':
-                '0x9298a7fccdf7655408a8106ff03c9cbf0610082cc0f00dfe4c8f73f57a60df71',
+              '2': '0x9298a7fccdf7655408a8106ff03c9cbf0610082cc0f00dfe4c8f73f57a60df71',
               '3': '1',
               '4': '0',
               '5': '1617878162',
@@ -177,8 +178,7 @@ describe('useProposalsVotes unit tests', () => {
             OffchainVotingContract: {
               '0': '8376297',
               '1': '0xf9731Ad60BeCA05E9FB7aE8Dd4B63BFA49675b68',
-              '2':
-                '0x9298a7fccdf7655408a8106ff03c9cbf0610082cc0f00dfe4c8f73f57a60df71',
+              '2': '0x9298a7fccdf7655408a8106ff03c9cbf0610082cc0f00dfe4c8f73f57a60df71',
               '3': '1',
               '4': '0',
               '5': '1617878162',
@@ -246,35 +246,36 @@ describe('useProposalsVotes unit tests', () => {
                * @note Maintain the same order as the contract's struct.
                * @note We use the same, single result for any off-chain votes repsonses for testing only.
                */
-              const offchainVotesDataResponse = web3Instance.eth.abi.encodeParameter(
-                {
-                  Voting: {
-                    snapshot: 'uint256',
-                    proposalHash: 'bytes32',
-                    reporter: 'address',
-                    resultRoot: 'bytes32',
-                    nbYes: 'uint256',
-                    nbNo: 'uint256',
-                    startingTime: 'uint256',
-                    gracePeriodStartingTime: 'uint256',
-                    isChallenged: 'bool',
-                    fallbackVotesCount: 'uint256',
+              const offchainVotesDataResponse =
+                web3Instance.eth.abi.encodeParameter(
+                  {
+                    Voting: {
+                      snapshot: 'uint256',
+                      proposalHash: 'bytes32',
+                      reporter: 'address',
+                      resultRoot: 'bytes32',
+                      nbYes: 'uint256',
+                      nbNo: 'uint256',
+                      startingTime: 'uint256',
+                      gracePeriodStartingTime: 'uint256',
+                      isChallenged: 'bool',
+                      fallbackVotesCount: 'uint256',
+                    },
                   },
-                },
-                {
-                  snapshot: '8376297',
-                  proposalHash: DEFAULT_PROPOSAL_HASH,
-                  reporter: '0xf9731Ad60BeCA05E9FB7aE8Dd4B63BFA49675b68',
-                  resultRoot:
-                    '0x9298a7fccdf7655408a8106ff03c9cbf0610082cc0f00dfe4c8f73f57a60df71',
-                  nbYes: '1',
-                  nbNo: '0',
-                  startingTime: '1617878162',
-                  gracePeriodStartingTime: '1617964640',
-                  isChallenged: false,
-                  fallbackVotesCount: '0',
-                }
-              );
+                  {
+                    snapshot: '8376297',
+                    proposalHash: DEFAULT_PROPOSAL_HASH,
+                    reporter: '0xf9731Ad60BeCA05E9FB7aE8Dd4B63BFA49675b68',
+                    resultRoot:
+                      '0x9298a7fccdf7655408a8106ff03c9cbf0610082cc0f00dfe4c8f73f57a60df71',
+                    nbYes: '1',
+                    nbNo: '0',
+                    startingTime: '1617878162',
+                    gracePeriodStartingTime: '1617964640',
+                    isChallenged: false,
+                    fallbackVotesCount: '0',
+                  }
+                );
 
               // Mock votes data responses
               mockWeb3Provider.injectResult(
@@ -327,35 +328,36 @@ describe('useProposalsVotes unit tests', () => {
               /**
                * @note Maintain the same order as the contract's struct.
                */
-              const offchainVotesDataResponse = web3Instance.eth.abi.encodeParameter(
-                {
-                  Voting: {
-                    snapshot: 'uint256',
-                    reporter: 'address',
-                    resultRoot: 'bytes32',
-                    nbYes: 'uint256',
-                    nbNo: 'uint256',
-                    startingTime: 'uint256',
-                    gracePeriodStartingTime: 'uint256',
-                    forceFailed: 'bool',
-                    isChallenged: 'bool',
-                    fallbackVotesCount: 'uint256',
+              const offchainVotesDataResponse =
+                web3Instance.eth.abi.encodeParameter(
+                  {
+                    Voting: {
+                      snapshot: 'uint256',
+                      reporter: 'address',
+                      resultRoot: 'bytes32',
+                      nbYes: 'uint256',
+                      nbNo: 'uint256',
+                      startingTime: 'uint256',
+                      gracePeriodStartingTime: 'uint256',
+                      forceFailed: 'bool',
+                      isChallenged: 'bool',
+                      fallbackVotesCount: 'uint256',
+                    },
                   },
-                },
-                {
-                  snapshot: '8376297',
-                  reporter: '0xf9731Ad60BeCA05E9FB7aE8Dd4B63BFA49675b68',
-                  resultRoot:
-                    '0x9298a7fccdf7655408a8106ff03c9cbf0610082cc0f00dfe4c8f73f57a60df71',
-                  nbYes: '1',
-                  nbNo: '0',
-                  startingTime: '1617878162',
-                  gracePeriodStartingTime: '1617964640',
-                  forceFailed: false,
-                  isChallenged: false,
-                  fallbackVotesCount: '0',
-                }
-              );
+                  {
+                    snapshot: '8376297',
+                    reporter: '0xf9731Ad60BeCA05E9FB7aE8Dd4B63BFA49675b68',
+                    resultRoot:
+                      '0x9298a7fccdf7655408a8106ff03c9cbf0610082cc0f00dfe4c8f73f57a60df71',
+                    nbYes: '1',
+                    nbNo: '0',
+                    startingTime: '1617878162',
+                    gracePeriodStartingTime: '1617964640',
+                    forceFailed: false,
+                    isChallenged: false,
+                    fallbackVotesCount: '0',
+                  }
+                );
 
               // Mock votes data responses
               mockWeb3Provider.injectResult(
@@ -390,8 +392,7 @@ describe('useProposalsVotes unit tests', () => {
             OffchainVotingContract: {
               '0': '8376297',
               '1': '0xf9731Ad60BeCA05E9FB7aE8Dd4B63BFA49675b68',
-              '2':
-                '0x9298a7fccdf7655408a8106ff03c9cbf0610082cc0f00dfe4c8f73f57a60df71',
+              '2': '0x9298a7fccdf7655408a8106ff03c9cbf0610082cc0f00dfe4c8f73f57a60df71',
               '3': '1',
               '4': '0',
               '5': '1617878162',
@@ -443,35 +444,36 @@ describe('useProposalsVotes unit tests', () => {
               /**
                * @note Maintain the same order as the contract's struct.
                */
-              const offchainVotesDataResponse = web3Instance.eth.abi.encodeParameter(
-                {
-                  Voting: {
-                    snapshot: 'uint256',
-                    proposalHash: 'bytes32',
-                    reporter: 'address',
-                    resultRoot: 'bytes32',
-                    nbYes: 'uint256',
-                    nbNo: 'uint256',
-                    startingTime: 'uint256',
-                    gracePeriodStartingTime: 'uint256',
-                    isChallenged: 'bool',
-                    fallbackVotesCount: 'uint256',
+              const offchainVotesDataResponse =
+                web3Instance.eth.abi.encodeParameter(
+                  {
+                    Voting: {
+                      snapshot: 'uint256',
+                      proposalHash: 'bytes32',
+                      reporter: 'address',
+                      resultRoot: 'bytes32',
+                      nbYes: 'uint256',
+                      nbNo: 'uint256',
+                      startingTime: 'uint256',
+                      gracePeriodStartingTime: 'uint256',
+                      isChallenged: 'bool',
+                      fallbackVotesCount: 'uint256',
+                    },
                   },
-                },
-                {
-                  snapshot: '8376297',
-                  proposalHash: DEFAULT_PROPOSAL_HASH,
-                  reporter: '0xf9731Ad60BeCA05E9FB7aE8Dd4B63BFA49675b68',
-                  resultRoot:
-                    '0x9298a7fccdf7655408a8106ff03c9cbf0610082cc0f00dfe4c8f73f57a60df71',
-                  nbYes: '1',
-                  nbNo: '0',
-                  startingTime: '1617878162',
-                  gracePeriodStartingTime: '1617964640',
-                  isChallenged: false,
-                  fallbackVotesCount: '0',
-                }
-              );
+                  {
+                    snapshot: '8376297',
+                    proposalHash: DEFAULT_PROPOSAL_HASH,
+                    reporter: '0xf9731Ad60BeCA05E9FB7aE8Dd4B63BFA49675b68',
+                    resultRoot:
+                      '0x9298a7fccdf7655408a8106ff03c9cbf0610082cc0f00dfe4c8f73f57a60df71',
+                    nbYes: '1',
+                    nbNo: '0',
+                    startingTime: '1617878162',
+                    gracePeriodStartingTime: '1617964640',
+                    isChallenged: false,
+                    fallbackVotesCount: '0',
+                  }
+                );
 
               // Mock votes data responses
               mockWeb3Provider.injectResult(
@@ -513,35 +515,36 @@ describe('useProposalsVotes unit tests', () => {
               /**
                * @note Maintain the same order as the contract's struct.
                */
-              const offchainVotesDataResponse = web3Instance.eth.abi.encodeParameter(
-                {
-                  Voting: {
-                    snapshot: 'uint256',
-                    proposalHash: 'bytes32',
-                    reporter: 'address',
-                    resultRoot: 'bytes32',
-                    nbYes: 'uint256',
-                    nbNo: 'uint256',
-                    startingTime: 'uint256',
-                    gracePeriodStartingTime: 'uint256',
-                    isChallenged: 'bool',
-                    fallbackVotesCount: 'uint256',
+              const offchainVotesDataResponse =
+                web3Instance.eth.abi.encodeParameter(
+                  {
+                    Voting: {
+                      snapshot: 'uint256',
+                      proposalHash: 'bytes32',
+                      reporter: 'address',
+                      resultRoot: 'bytes32',
+                      nbYes: 'uint256',
+                      nbNo: 'uint256',
+                      startingTime: 'uint256',
+                      gracePeriodStartingTime: 'uint256',
+                      isChallenged: 'bool',
+                      fallbackVotesCount: 'uint256',
+                    },
                   },
-                },
-                {
-                  snapshot: '8376297',
-                  proposalHash: DEFAULT_PROPOSAL_HASH,
-                  reporter: '0xf9731Ad60BeCA05E9FB7aE8Dd4B63BFA49675b68',
-                  resultRoot:
-                    '0x9298a7fccdf7655408a8106ff03c9cbf0610082cc0f00dfe4c8f73f57a60df71',
-                  nbYes: '1',
-                  nbNo: '0',
-                  startingTime: '1617878162',
-                  gracePeriodStartingTime: '1617964640',
-                  isChallenged: false,
-                  fallbackVotesCount: '0',
-                }
-              );
+                  {
+                    snapshot: '8376297',
+                    proposalHash: DEFAULT_PROPOSAL_HASH,
+                    reporter: '0xf9731Ad60BeCA05E9FB7aE8Dd4B63BFA49675b68',
+                    resultRoot:
+                      '0x9298a7fccdf7655408a8106ff03c9cbf0610082cc0f00dfe4c8f73f57a60df71',
+                    nbYes: '1',
+                    nbNo: '0',
+                    startingTime: '1617878162',
+                    gracePeriodStartingTime: '1617964640',
+                    isChallenged: false,
+                    fallbackVotesCount: '0',
+                  }
+                );
 
               // Mock votes data responses
               mockWeb3Provider.injectResult(

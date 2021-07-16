@@ -80,10 +80,8 @@ export default function SubmitAction(props: SubmitActionProps) {
     setOtherDisabledReasons,
   } = useMemberActionDisabled();
 
-  const {
-    proposalSignAndSendStatus,
-    signAndSendProposal,
-  } = useSignAndSubmitProposal<SnapshotType.proposal>();
+  const {proposalSignAndSendStatus, signAndSendProposal} =
+    useSignAndSubmitProposal<SnapshotType.proposal>();
 
   const {fast: fastGasPrice} = useETHGasPrice();
 
