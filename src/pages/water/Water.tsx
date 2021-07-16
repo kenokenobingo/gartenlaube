@@ -21,7 +21,9 @@ export default function Water() {
   // const {account, web3Instance} = useWeb3Modal();
 
   const [waterContract, setWaterContract] = useState<Web3Contract>();
-  const [irrigationStatus, setIrrigationStatus] = useState<String>("🚨 Error: Cannot determine status.");
+  const [irrigationStatus, setIrrigationStatus] = useState<String>(
+    '🚨 Error: Cannot determine status.'
+  );
   const [renderStatus, setRenderStatus] = useState<String>();
 
   const waterAddressValue: string = WATER_CONTRACT_ADDRESS[DEFAULT_CHAIN];
@@ -96,7 +98,7 @@ export default function Water() {
       }
     } catch (error) {
       console.error(error);
-      setIrrigationStatus("");
+      setIrrigationStatus('');
       setRenderStatus('🚨 Error: Cannot determine status.');
     }
   }
