@@ -8,7 +8,7 @@ import {AbiItem} from 'web3-utils';
 
 import FadeIn from '../../components/common/FadeIn';
 import Wrap from '../../components/common/Wrap';
-import {DAO_REGISTRY_CONTRACT_ADDRESS} from '../../config';
+// import {DAO_REGISTRY_CONTRACT_ADDRESS} from '../../config';
 // import {WATER_CONTRACT_ADDRESS} from '../../config';
 
 export default function Water() {
