@@ -46,9 +46,9 @@
   top: 100%;
   left: 50%;
   margin-left: -5px;
-  border-width: 5px;
+  border-width: 2px;
   border-style: solid;
-  border-color: #555 transparent transparent transparent;
+  border-color: $color-primary;
 }
 
 .daotoken__tooltip:hover .daotoken__tooltiptext {
