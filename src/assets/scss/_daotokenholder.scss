@@ -3,18 +3,18 @@
 @use "./mixins" as *; /* load without namespace for convenience */
 
 .daotokenholder__button {
-  border: none;
-  border-radius: 6px;
+  border: 2px solid $color-border-primary;
+  color: $color-primary;
+  background-color: $color-background-primary;
   padding: 0.6rem 1rem;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  border-radius: 8px;
-  box-shadow: 0 2px 2px 0 $color-shadow-primary;
+  border-radius: 0;
 
-  font-family: $font-mono;
+  font-family: $font-accent;
 
   margin-right: 2rem;
   cursor: pointer;
