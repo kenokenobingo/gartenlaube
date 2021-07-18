@@ -90,9 +90,9 @@ export default function Water() {
       console.log('Result ' + result);
 
       if (irrigationStatus) {
-        setRenderStatus('🟢 The pump is running.');
+        setRenderStatus('🟢 Irrigation in progress.');
       } else if (!irrigationStatus) {
-        setRenderStatus('🔴 The pump is not running.');
+        setRenderStatus('🔴 No irrigation necessary.');
       } else {
         setRenderStatus('🚨 Error: Cannot determine status.');
       }
