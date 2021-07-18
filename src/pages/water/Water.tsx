@@ -21,7 +21,9 @@ export default function Water() {
   // const {account, web3Instance} = useWeb3Modal();
 
   const [waterContract, setWaterContract] = useState<Web3Contract>();
-  const [renderStatus, setRenderStatus] = useState<String>('🚨 Error: Cannot determine irrigation status.');
+  const [renderStatus, setRenderStatus] = useState<String>(
+    '🚨 Error: Cannot determine irrigation status.'
+  );
 
   const waterAddressValue: string = WATER_CONTRACT_ADDRESS[DEFAULT_CHAIN];
 
