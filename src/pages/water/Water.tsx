@@ -94,7 +94,7 @@ export default function Water() {
       } else if (!irrigationStatus) {
         setRenderStatus('🔴 No irrigation necessary.');
       } else {
-        setRenderStatus('🚨 Error: Cannot determine status.');
+        setRenderStatus('🚨 Error: Cannot determine irrigation status.');
       }
     } catch (error) {
       console.error(error);
